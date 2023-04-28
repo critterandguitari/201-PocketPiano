@@ -1,0 +1,1 @@
+avrdude -p m164p -c usbtiny -U lfuse:w:0xE2:m -u

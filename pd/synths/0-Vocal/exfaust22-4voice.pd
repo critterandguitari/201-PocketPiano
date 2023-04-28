@@ -1,0 +1,217 @@
+#N canvas 4 50 1461 861 10;
+#X obj 10 150 inlet;
+#X obj 130 150 inlet;
+#X obj 190 150 r \$0-read;
+#X obj 130 180 r \$0-all;
+#X obj 190 180 faust-control \$0;
+#X obj 190 210 s \$0-write;
+#X obj 130 210 r \$0-in;
+#X obj 130 480 s \$0-out;
+#X obj 10 240 faust-gate 1;
+#X obj 130 240 exfaust22~;
+#X obj 10 270 faust-gate 2;
+#X obj 130 270 exfaust22~;
+#X obj 10 300 faust-gate 3;
+#X obj 130 300 exfaust22~;
+#X obj 10 330 faust-gate 4;
+#X obj 130 330 exfaust22~;
+#X obj 352 547 outlet~;
+#X obj 10 510 outlet;
+#X obj 10 30 hsl 128 15 -2 2 0 0 \$0-vocal/midi/bend \$0-vocal/midi/bend
+bend -2 -6 0 10 -262144 -1 -1 6350 1;
+#X obj 160 30 nbx 5 14 -2 2 0 0 \$0-vocal/midi/bend \$0-vocal/midi/bend
+empty 0 -6 0 10 -262144 -1 -1 0 256;
+#X obj 235 30 hsl 128 15 0 30 0 0 \$0-vocal/midi/envAttack \$0-vocal/midi/envAttack
+envAttack -2 -6 0 10 -262144 -1 -1 4233 1;
+#X obj 385 30 nbx 5 14 0 30 0 0 \$0-vocal/midi/envAttack \$0-vocal/midi/envAttack
+empty 0 -6 0 10 -262144 -1 -1 10 256;
+#X obj 460 30 hsl 128 15 0 1 0 0 \$0-vocal/midi/sustain \$0-vocal/midi/sustain
+sustain -2 -6 0 10 -262144 -1 -1 0 1;
+#X obj 610 30 nbx 5 14 0 1 0 0 \$0-vocal/midi/sustain \$0-vocal/midi/sustain
+empty 0 -6 0 10 -262144 -1 -1 0 256;
+#X obj 10 60 hsl 128 15 0 4 0 0 \$0-vocal/otherParams/voiceType \$0-vocal/otherParams/voiceType
+voiceType -2 -6 0 10 -262144 -1 -1 3175 1;
+#X obj 160 60 nbx 5 14 0 4 0 0 \$0-vocal/otherParams/voiceType \$0-vocal/otherParams/voiceType
+empty 0 -6 0 10 -262144 -1 -1 1 256;
+#X obj 235 60 hsl 128 15 0 4 0 0 \$0-vocal/otherParams/vowel \$0-vocal/otherParams/vowel
+vowel -2 -6 0 10 -262144 -1 -1 5090 1;
+#X obj 385 60 nbx 5 14 0 4 0 0 \$0-vocal/otherParams/vowel \$0-vocal/otherParams/vowel
+empty 0 -6 0 10 -262144 -1 -1 1.60313 256;
+#X obj 460 60 hsl 128 15 0 1 0 0 \$0-vocal/otherParams/fricative \$0-vocal/otherParams/fricative
+fricative -2 -6 0 10 -262144 -1 -1 0 1;
+#X obj 610 60 nbx 5 14 0 1 0 0 \$0-vocal/otherParams/fricative \$0-vocal/otherParams/fricative
+empty 0 -6 0 10 -262144 -1 -1 0 256;
+#X obj 685 60 hsl 128 15 1 10 0 0 \$0-vocal/otherParams/vibratoFreq
+\$0-vocal/otherParams/vibratoFreq vibratoFreq -2 -6 0 10 -262144 -1
+-1 7056 1;
+#X obj 835 60 nbx 5 14 1 10 0 0 \$0-vocal/otherParams/vibratoFreq \$0-vocal/otherParams/vibratoFreq
+empty 0 -6 0 10 -262144 -1 -1 6 256;
+#X obj 910 60 hsl 128 15 0 1 0 0 \$0-vocal/otherParams/vibratoGain
+\$0-vocal/otherParams/vibratoGain vibratoGain -2 -6 0 10 -262144 -1
+-1 0 1;
+#X obj 1060 60 nbx 5 14 0 1 0 0 \$0-vocal/otherParams/vibratoGain \$0-vocal/otherParams/vibratoGain
+empty 0 -6 0 10 -262144 -1 -1 0 256;
+#X obj 1135 60 hsl 128 15 0 1 0 0 \$0-vocal/otherParams/outGain \$0-vocal/otherParams/outGain
+outGain -2 -6 0 10 -262144 -1 -1 6350 1;
+#X obj 1285 60 nbx 5 14 0 1 0 0 \$0-vocal/otherParams/outGain \$0-vocal/otherParams/outGain
+empty 0 -6 0 10 -262144 -1 -1 0.5 256;
+#X obj 1322 3 bng 15 250 50 1 \$0-init \$0-ignore empty 0 -6 0 10 -262144
+-1 -1;
+#X obj 1342 3 tgl 15 1 \$0-active \$0-active empty 0 -6 0 10 -262144
+-1 -1 1 1;
+#X obj 1390 10 r \$0-init;
+#X obj 1686 10 s \$0-all;
+#X obj 1834 10 s \$0-read;
+#X obj 1982 10 r \$0-write;
+#X msg 1390 30 1;
+#X obj 1390 50 s \$0-active;
+#X obj 1686 30 r \$0-active;
+#X msg 1686 50 active \$1;
+#X obj 1982 30 route active;
+#X obj 1982 50 s \$0-active;
+#X msg 1390 70 0;
+#X obj 1390 90 s \$0-vocal/midi/bend;
+#X obj 1686 70 r \$0-vocal/midi/bend;
+#X msg 1686 90 /vocal/midi/bend \$1;
+#X obj 1982 70 route /vocal/midi/bend;
+#X obj 1982 90 s \$0-vocal/midi/bend;
+#X msg 1390 110 10;
+#X obj 1390 130 s \$0-vocal/midi/envAttack;
+#X obj 1686 110 r \$0-vocal/midi/envAttack;
+#X msg 1686 130 /vocal/midi/envAttack \$1;
+#X obj 1982 110 route /vocal/midi/envAttack;
+#X obj 1982 130 s \$0-vocal/midi/envAttack;
+#X msg 1390 150 0;
+#X obj 1390 170 s \$0-vocal/midi/sustain;
+#X obj 1686 150 r \$0-vocal/midi/sustain;
+#X msg 1686 170 /vocal/midi/sustain \$1;
+#X obj 1982 150 route /vocal/midi/sustain;
+#X obj 1982 170 s \$0-vocal/midi/sustain;
+#X msg 1390 190 0;
+#X obj 1390 210 s \$0-vocal/otherParams/voiceType;
+#X obj 1686 190 r \$0-vocal/otherParams/voiceType;
+#X msg 1686 210 /vocal/otherParams/voiceType \$1;
+#X obj 1982 190 route /vocal/otherParams/voiceType;
+#X obj 1982 210 s \$0-vocal/otherParams/voiceType;
+#X msg 1390 230 0;
+#X obj 1390 250 s \$0-vocal/otherParams/vowel;
+#X obj 1686 230 r \$0-vocal/otherParams/vowel;
+#X msg 1686 250 /vocal/otherParams/vowel \$1;
+#X obj 1982 230 route /vocal/otherParams/vowel;
+#X obj 1982 250 s \$0-vocal/otherParams/vowel;
+#X msg 1390 270 0;
+#X obj 1390 290 s \$0-vocal/otherParams/fricative;
+#X obj 1686 270 r \$0-vocal/otherParams/fricative;
+#X msg 1686 290 /vocal/otherParams/fricative \$1;
+#X obj 1982 270 route /vocal/otherParams/fricative;
+#X obj 1982 290 s \$0-vocal/otherParams/fricative;
+#X msg 1390 310 6;
+#X obj 1390 330 s \$0-vocal/otherParams/vibratoFreq;
+#X obj 1686 310 r \$0-vocal/otherParams/vibratoFreq;
+#X msg 1686 330 /vocal/otherParams/vibratoFreq \$1;
+#X obj 1982 310 route /vocal/otherParams/vibratoFreq;
+#X obj 1982 330 s \$0-vocal/otherParams/vibratoFreq;
+#X msg 1390 350 0.5;
+#X obj 1390 370 s \$0-vocal/otherParams/vibratoGain;
+#X obj 1686 350 r \$0-vocal/otherParams/vibratoGain;
+#X msg 1686 370 /vocal/otherParams/vibratoGain \$1;
+#X obj 1982 350 route /vocal/otherParams/vibratoGain;
+#X obj 1982 370 s \$0-vocal/otherParams/vibratoGain;
+#X msg 1390 390 0.5;
+#X obj 1390 410 s \$0-vocal/otherParams/outGain;
+#X obj 1686 390 r \$0-vocal/otherParams/outGain;
+#X msg 1686 410 /vocal/otherParams/outGain \$1;
+#X obj 1982 390 route /vocal/otherParams/outGain;
+#X obj 1982 410 s \$0-vocal/otherParams/outGain;
+#X text 0 100 Generated Wed Nov 2 23:09:30 2022 by faust2pd v2.16.
+See http://faust.grame.fr and http://purelang.bitbucket.org.;
+#X obj 301 333 *~ 0.5;
+#X obj 301 379 *~ 0.5;
+#X obj 303 442 *~ 0.5;
+#X obj 284 482 *~ 0.5;
+#X connect 0 0 8 0;
+#X connect 0 0 10 0;
+#X connect 0 0 12 0;
+#X connect 0 0 14 0;
+#X connect 1 0 4 0;
+#X connect 1 0 17 0;
+#X connect 2 0 4 0;
+#X connect 3 0 9 0;
+#X connect 3 0 11 0;
+#X connect 3 0 13 0;
+#X connect 3 0 15 0;
+#X connect 4 0 5 0;
+#X connect 6 0 9 0;
+#X connect 8 0 9 0;
+#X connect 9 0 7 0;
+#X connect 9 1 103 0;
+#X connect 10 0 11 0;
+#X connect 11 1 104 0;
+#X connect 12 0 13 0;
+#X connect 13 1 105 0;
+#X connect 14 0 15 0;
+#X connect 15 1 106 0;
+#X connect 38 0 48 0;
+#X connect 38 0 54 0;
+#X connect 38 0 60 0;
+#X connect 38 0 66 0;
+#X connect 38 0 72 0;
+#X connect 38 0 78 0;
+#X connect 38 0 84 0;
+#X connect 38 0 90 0;
+#X connect 38 0 96 0;
+#X connect 41 0 46 0;
+#X connect 42 0 43 0;
+#X connect 44 0 45 0;
+#X connect 45 0 39 0;
+#X connect 46 0 47 0;
+#X connect 46 1 52 0;
+#X connect 48 0 49 0;
+#X connect 50 0 51 0;
+#X connect 51 0 39 0;
+#X connect 52 0 53 0;
+#X connect 52 1 58 0;
+#X connect 54 0 55 0;
+#X connect 56 0 57 0;
+#X connect 57 0 39 0;
+#X connect 58 0 59 0;
+#X connect 58 1 64 0;
+#X connect 60 0 61 0;
+#X connect 62 0 63 0;
+#X connect 63 0 39 0;
+#X connect 64 0 65 0;
+#X connect 64 1 70 0;
+#X connect 66 0 67 0;
+#X connect 68 0 69 0;
+#X connect 69 0 39 0;
+#X connect 70 0 71 0;
+#X connect 70 1 76 0;
+#X connect 72 0 73 0;
+#X connect 74 0 75 0;
+#X connect 75 0 39 0;
+#X connect 76 0 77 0;
+#X connect 76 1 82 0;
+#X connect 78 0 79 0;
+#X connect 80 0 81 0;
+#X connect 81 0 39 0;
+#X connect 82 0 83 0;
+#X connect 82 1 88 0;
+#X connect 84 0 85 0;
+#X connect 86 0 87 0;
+#X connect 87 0 39 0;
+#X connect 88 0 89 0;
+#X connect 88 1 94 0;
+#X connect 90 0 91 0;
+#X connect 92 0 93 0;
+#X connect 93 0 39 0;
+#X connect 94 0 95 0;
+#X connect 94 1 100 0;
+#X connect 96 0 97 0;
+#X connect 98 0 99 0;
+#X connect 99 0 39 0;
+#X connect 100 0 101 0;
+#X connect 103 0 16 0;
+#X connect 104 0 16 0;
+#X connect 105 0 16 0;
+#X connect 106 0 16 0;
+#X coords 0 -1 1 1 1360 80 1 0 0;
