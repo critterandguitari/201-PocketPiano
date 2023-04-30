@@ -1479,8 +1479,8 @@ button if it was pressed, f 28;
 #X restore 730 17 pd synth-select;
 #X msg 1037 148 \; pd-synth-modules obj 10 10 synth-loader \$1 \$2
 ;
-#X obj 619 -68 synth-loader s1 ../synths/0-PocketFaust/main;
-#X obj 620 -39 synth-loader s2 ../synths/0-Physical-Model/main;
+#X obj 619 -68 synth-loader s1 ../synths/1-basic-poly/module;
+#X obj 620 -39 synth-loader s2 ../synths/2-guitar/module;
 #X connect 1 0 15 0;
 #X connect 2 0 31 0;
 #X connect 2 1 4 0;

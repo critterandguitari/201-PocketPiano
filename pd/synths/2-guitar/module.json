@@ -1,0 +1,14 @@
+{
+    "display" : "201_Guitar",
+    "parameters" :  [ 
+        ["pct","201_k1","Envelope",0,100,0],
+        ["pct","201_k2","Mod Amount",0,100,0],
+        ["pct","201_k3","Mod Index",0,100,0]
+        
+    ],
+    "pages" : [ 
+        ["pg_main","Main",["201_k1","201_k2","201_k3"]]
+        
+    ]
+}
+
