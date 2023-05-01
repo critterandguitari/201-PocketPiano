@@ -1,4 +1,4 @@
-#N canvas 4 164 929 791 12;
+#N canvas 4 25 929 777 12;
 #X obj 464 217 pow 2;
 #X obj 464 241 * 20;
 #X obj 587 222 pow 2;
@@ -23,68 +23,16 @@
 #X obj 571 742 s ctrlOut-\$1;
 #X obj 313 744 outlet~ outL-\$1;
 #X obj 335 715 outlet~ outR-\$1;
-#X obj 299 148 r 201_k1-\$1;
-#X obj 460 145 r 201_k2-\$1;
-#X obj 582 141 r 201_k3-\$1;
-#N canvas 4 50 450 300 controls 0;
-#X obj 899 283 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
-#X obj 896 303 / 127;
-#X obj 896 327 s oscGain1;
-#X obj 994 351 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
-#X obj 991 371 / 127;
-#X obj 991 396 s oscGain2;
-#X obj 1087 261 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
-#X obj 1084 281 / 127;
-#X obj 1182 299 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
-#X obj 1179 319 / 127;
-#X obj 1084 305 s oscGain3;
-#X obj 1179 343 s oscGain4;
-#X obj 895 474 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
-#X obj 892 494 / 127;
-#X obj 990 512 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
-#X obj 987 532 / 127;
-#X obj 1083 452 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
-#X obj 1080 472 / 127;
-#X obj 1178 490 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
-#X obj 1175 510 / 127;
-#X obj 892 518 s att;
-#X obj 987 557 s dec;
-#X obj 1080 496 s sus;
-#X obj 1175 534 s rel;
-#X connect 0 0 1 0;
-#X connect 1 0 2 0;
-#X connect 3 0 4 0;
-#X connect 4 0 5 0;
-#X connect 6 0 7 0;
-#X connect 7 0 10 0;
-#X connect 8 0 9 0;
-#X connect 9 0 11 0;
-#X connect 12 0 13 0;
-#X connect 13 0 20 0;
-#X connect 14 0 15 0;
-#X connect 15 0 21 0;
-#X connect 16 0 17 0;
-#X connect 17 0 22 0;
-#X connect 18 0 19 0;
-#X connect 19 0 23 0;
-#X restore 726 435 pd controls;
 #X obj 313 676 *~ 0.8;
-#X obj 460 169 / 100;
-#X obj 582 165 / 100;
 #X obj 295 488 list prepend all;
 #X obj 295 512 list trim;
+#X obj 299 148 r shape-\$1;
+#X obj 460 145 r tone-\$1;
+#X obj 582 141 r surprise-\$1;
 #X connect 0 0 1 0;
 #X connect 1 0 6 0;
 #X connect 2 0 9 0;
-#X connect 3 0 31 0;
+#X connect 3 0 25 0;
 #X connect 4 0 12 1;
 #X connect 5 0 3 0;
 #X connect 6 0 8 0;
@@ -95,14 +43,12 @@
 #X connect 11 0 7 0;
 #X connect 11 1 7 1;
 #X connect 11 2 7 2;
-#X connect 12 0 28 0;
+#X connect 12 0 24 0;
 #X connect 15 0 11 0;
-#X connect 24 0 5 0;
-#X connect 25 0 29 0;
-#X connect 26 0 30 0;
-#X connect 28 0 22 0;
-#X connect 28 0 23 0;
-#X connect 29 0 0 0;
-#X connect 30 0 2 0;
-#X connect 31 0 32 0;
-#X connect 32 0 12 2;
+#X connect 24 0 22 0;
+#X connect 24 0 23 0;
+#X connect 25 0 26 0;
+#X connect 26 0 12 2;
+#X connect 27 0 5 0;
+#X connect 28 0 0 0;
+#X connect 29 0 2 0;

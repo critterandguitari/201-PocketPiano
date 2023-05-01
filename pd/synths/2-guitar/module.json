@@ -1,13 +1,12 @@
 {
-    "display" : "201_Guitar",
+    "display" : "201 Guitar PM",
     "parameters" :  [ 
-        ["pct","201_k1","Envelope",0,100,0],
-        ["pct","201_k2","Mod Amount",0,100,0],
-        ["pct","201_k3","Mod Index",0,100,0]
-        
+        [ "float", "shape",    "Shape",    0, 1, .5],
+        [ "float", "tone",     "Tone",     0, 1, .5],
+        [ "float", "surprise", "Surprise", 0, 1, .5]
     ],
     "pages" : [ 
-        ["pg_main","Main",["201_k1","201_k2","201_k3"]]
+        ["pg_main","Main",["shape","tone","surprise"]]
         
     ]
 }
