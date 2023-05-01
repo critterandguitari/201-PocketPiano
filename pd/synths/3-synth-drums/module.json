@@ -1,0 +1,13 @@
+{
+    "display" : "201 Guitar PM",
+    "parameters" :  [ 
+        [ "float", "shape",    "Shape",    0, 1, .5],
+        [ "float", "tone",     "Tone",     0, 1, .5],
+        [ "float", "surprise", "Surprise", 0, 1, .5]
+    ],
+    "pages" : [ 
+        ["pg_main","Main",["shape","tone","surprise"]]
+        
+    ]
+}
+
