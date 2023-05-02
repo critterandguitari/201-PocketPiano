@@ -31,6 +31,7 @@ void load_patch();
 // osc handlers
 void error(int num, const char *m, const char *path);
 int led_handler(const char *path, const char *types, lo_arg ** argv, int argc, void *data, void *user_data);
+int leds_handler(const char *path, const char *types, lo_arg ** argv, int argc, void *data, void *user_data);
 int led1_handler(const char *path, const char *types, lo_arg ** argv, int argc, void *data, void *user_data);
 int led2_handler(const char *path, const char *types, lo_arg ** argv, int argc, void *data, void *user_data);
 int led3_handler(const char *path, const char *types, lo_arg ** argv, int argc, void *data, void *user_data);
@@ -42,9 +43,9 @@ struct i2c_dev i2c;
 // data to and from the peripheral
 #define DATA_PI_SIZE 9
 #define DATA_PO_SIZE 7
-uint8_t data_pi[DATA_PI_SIZE] = {  100,0,0,
-                        0,100,0,
-                        0,0,100};
+uint8_t data_pi[DATA_PI_SIZE] = {  1,1,1,
+                                   1,1,1,
+                                   1,1,1};
 uint8_t data_po[DATA_PO_SIZE] = {0,0,0,0,0,0,0};
 uint32_t buttons_last[21] = {1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1};
 int fd;
@@ -95,10 +96,28 @@ int main() {
     lo_server_thread_add_method(st, "/led1", "i", led1_handler, NULL);
     lo_server_thread_add_method(st, "/led2", "i", led2_handler, NULL);
     lo_server_thread_add_method(st, "/led3", "i", led3_handler, NULL);
+    lo_server_thread_add_method(st, "/leds", "iiiiiiiii", leds_handler, NULL);
     lo_server_thread_add_method(st, "/poweroff", "i", poweroff_handler, NULL);
     lo_server_thread_start(st); 
  
     usleep(10000); 
+
+    // check if this is a first time boot and we need to enlarge second partition
+    if (access("/etc/201pp-format.lock", F_OK) != -1) {
+        printf("partition 2 already resized \n");
+    } else {
+        printf("resizing partition \n");
+
+        // red leds
+        uint8_t final_leds[DATA_PI_SIZE] = {  0,0,20,
+                                              0,0,20,
+                                              0,0,20};
+        i2c_write(&i2c, final_leds, DATA_PI_SIZE);
+         
+        system("/home/root/hw/scripts/part-enlarge.sh");
+    }
+
+
     i2c_write(&i2c, data_pi, DATA_PI_SIZE);
 
     timer_reset();
@@ -130,7 +149,7 @@ int main() {
             if (((buttons >> 20) & 1) != buttons_last[20]){
                 buttons_last[20] = (buttons >> 20) & 1;
                 check_for_reload();
-                lo_send(t, "/aux", "i", ~(buttons >> 20) & 1);
+                lo_send(t, "/shift", "i", ~(buttons >> 20) & 1);
             }
 
             // send knobs 
@@ -155,7 +174,7 @@ int main() {
             if (((buttons >> 20) & 1) != buttons_last[20]){
                 buttons_last[20] = (buttons >> 20) & 1;
                 check_for_reload();
-                lo_send(t, "/aux", "i", ~(buttons >> 20) & 1);
+                lo_send(t, "/shift", "i", ~(buttons >> 20) & 1);
             }
         }
 
@@ -192,6 +211,25 @@ void load_patch() {
 void error(int num, const char *msg, const char *path) {
     printf("liblo server error %d in path %s: %s\n", num, path, msg);
     fflush(stdout);
+}
+
+int leds_handler(const char *path, const char *types, lo_arg ** argv, int argc, void *data, void *user_data) {
+    
+    data_pi[8] = argv[0]->i;
+    data_pi[7] = argv[1]->i;
+    data_pi[6] = argv[2]->i;
+     
+    data_pi[5] = argv[3]->i;
+    data_pi[4] = argv[4]->i;
+    data_pi[3] = argv[5]->i;
+     
+    data_pi[2] = argv[6]->i;
+    data_pi[1] = argv[7]->i;
+    data_pi[0] = argv[8]->i;
+       
+    i2c_write(&i2c, data_pi, DATA_PI_SIZE);
+    return 0;
+
 }
 
 int led_handler(const char *path, const char *types, lo_arg ** argv, int argc, void *data, void *user_data) {
