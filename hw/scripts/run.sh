@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # kill it first
-killall main
+killall app
 killall pd
 rm /tmp/pd.log
 
 # start it up
-cd /home/root/hw
-./main &
+cd /home/root/app/hw
+./app &
 

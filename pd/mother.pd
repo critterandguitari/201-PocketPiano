@@ -6,7 +6,7 @@
 #X obj 1061 592 catch~ outR;
 #X obj 1042 644 dac~;
 #X obj 43 -23 declare -path lib;
-#N canvas 4 50 1004 709 arpseq 0;
+#N canvas 4 50 1004 709 arpseq 1;
 #X obj 169 100 unpack 0 0;
 #X obj 169 160 pack 0 0 0;
 #X obj 169 221 unpack, f 54;

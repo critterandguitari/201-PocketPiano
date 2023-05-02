@@ -6,6 +6,6 @@ sync
 partprobe
 sync
 dd if=/dev/zero of=/dev/mmcblk1p2 
+rm /etc/app-sdcard-format.lock
 sync
-rm /etc/201pp-format.lock
-#mkfs.vfat -F 12 -n 5MOONS /dev/mmcblk1p2
+#mkfs.vfat -F 12 -n APP /dev/mmcblk1p2

@@ -12,10 +12,9 @@ sync
 echo "-------------make new fs..."
 mkfs.vfat -F 32 -n 201PP /dev/mmcblk1p2
 
-echo "-------------adding pd patch making songs dir..."
+echo "-------------adding pd patch..."
 mount /dev/mmcblk1p2 /sdcard
-cp -r /home/root/pd /sdcard/
-mkdir -p /sdcard/songs/1
+cp -r /home/root/app/pd /sdcard/
 
-touch /etc/201pp-format.lock
+touch /etc/app-sdcard-format.lock
 sync

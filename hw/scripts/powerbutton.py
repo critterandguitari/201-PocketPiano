@@ -15,7 +15,7 @@ cmd = "cat /proc/interrupts | grep powerkey |  awk '{ print $2 }'"
 while True :	
     res = int(run_cmd(cmd))
     if res != 0 :
-        os.system("sh /home/root/shutdown.sh")
+        os.system("sh /home/root/app/hw/scripts/shutdown.sh")
         exit()
 	
     time.sleep(1)
