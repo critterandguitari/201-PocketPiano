@@ -6,7 +6,7 @@
 #X obj 1061 592 catch~ outR;
 #X obj 1042 644 dac~;
 #X obj 43 -23 declare -path lib;
-#N canvas 4 50 1004 709 arpseq 1;
+#N canvas 3 33 1004 709 arpseq 0;
 #X obj 169 100 unpack 0 0;
 #X obj 169 160 pack 0 0 0;
 #X obj 169 221 unpack, f 54;
@@ -623,9 +623,9 @@ following elements over 1 place);
 #X connect 18 1 16 0;
 #X connect 19 0 10 0;
 #X restore 199 442 pd singledown2;
-#N canvas 31 50 1242 820 updown2 0;
+#N canvas 31 25 1242 777 updown2 0;
 #X obj 338 565 outlet;
-#N canvas 36 50 1242 820 singleup2 0;
+#N canvas 36 25 1242 777 singleup2 0;
 #X obj 307 345 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
 #000000 #000000;
 #X floatatom 484 494 5 0 0 0 - - - 0;
@@ -673,7 +673,7 @@ following elements over 1 place);
 #X restore 276 400 pd singleup2;
 #X obj 301 151 spigot 0;
 #X obj 433 66 inlet;
-#N canvas 27 50 1242 820 singledown2 0;
+#N canvas 27 25 1242 777 singledown2 0;
 #X obj 271 348 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
 #000000 #000000;
 #X floatatom 422 282 5 0 0 0 - - - 0;
@@ -882,6 +882,7 @@ by the sorting function so it always looks blank;
 #X text 633 199 organize notes into arrays \, then play them;
 #X text 130 26 tick, f 10;
 #X obj 758 425 print;
+#X obj 765 113 list;
 #X connect 0 0 8 0;
 #X connect 0 1 8 1;
 #X connect 1 0 9 0;
