@@ -1,5 +1,5 @@
 # 1 "apa102.c"
-# 1 "/Users/owen1/repos/pp22/interface/mcu-i2c/atmega164//"
+# 1 "/Users/owen1/repos/201-PocketPiano/hw/atmega164//"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "apa102.c"
@@ -216,93 +216,135 @@ void apa102_set_all_leds(uint8_t r, uint8_t g, uint8_t b);
 # 4 "apa102.c" 2
 # 16 "apa102.c"
 void apa102_init(void) {
-# 44 "apa102.c"
+
+
     
-# 44 "apa102.c" 3
+# 19 "apa102.c" 3
    (*(volatile uint8_t *)((0x04) + 0x20)) 
-# 44 "apa102.c"
+# 19 "apa102.c"
+          |= (1 << 
+# 19 "apa102.c" 3
+                   4
+# 19 "apa102.c"
+                     );
+    
+# 20 "apa102.c" 3
+   (*(volatile uint8_t *)((0x05) + 0x20)) 
+# 20 "apa102.c"
+           |= (1 << 
+# 20 "apa102.c" 3
+                    4
+# 20 "apa102.c"
+                      );
+
+
+    
+# 23 "apa102.c" 3
+   (*(volatile uint8_t *)((0x04) + 0x20)) 
+# 23 "apa102.c"
             |= (1 << 
-# 44 "apa102.c" 3
+# 23 "apa102.c" 3
                      5
-# 44 "apa102.c"
+# 23 "apa102.c"
                          );
     
-# 45 "apa102.c" 3
+# 24 "apa102.c" 3
    (*(volatile uint8_t *)((0x04) + 0x20)) 
-# 45 "apa102.c"
+# 24 "apa102.c"
            |= (1 << 
-# 45 "apa102.c" 3
+# 24 "apa102.c" 3
                     7
-# 45 "apa102.c"
+# 24 "apa102.c"
                        );
 
-    
-# 47 "apa102.c" 3
-   (*(volatile uint8_t *)((0x05) + 0x20)) 
-# 47 "apa102.c"
-             |= (1 << 
-# 47 "apa102.c" 3
-                      5
-# 47 "apa102.c"
-                          );
-    
-# 48 "apa102.c" 3
-   (*(volatile uint8_t *)((0x05) + 0x20)) 
-# 48 "apa102.c"
-            |= (1 << 
-# 48 "apa102.c" 3
-                     7
-# 48 "apa102.c"
-                        );
 
+    
+# 27 "apa102.c" 3
+   (*(volatile uint8_t *)((0x05) + 0x20)) 
+# 27 "apa102.c"
+             |= (1 << 
+# 27 "apa102.c" 3
+                      5
+# 27 "apa102.c"
+                          );
+
+
+    
+# 30 "apa102.c" 3
+   (*(volatile uint8_t *)((0x2C) + 0x20)) 
+# 30 "apa102.c"
+        |= (1 << 
+# 30 "apa102.c" 3
+                 6
+# 30 "apa102.c"
+                    );
+
+
+    
+# 33 "apa102.c" 3
+   (*(volatile uint8_t *)((0x2C) + 0x20)) 
+# 33 "apa102.c"
+        |= 1 << 
+# 33 "apa102.c" 3
+                4
+# 33 "apa102.c"
+                    ;
+
+
+    
+# 36 "apa102.c" 3
+   (*(volatile uint8_t *)((0x2C) + 0x20)) 
+# 36 "apa102.c"
+        |= (1 << 
+# 36 "apa102.c" 3
+                 3
+# 36 "apa102.c"
+                     ) | (1 << 
+# 36 "apa102.c" 3
+                               2
+# 36 "apa102.c"
+                                   );
+
+
+    
+# 39 "apa102.c" 3
+   (*(volatile uint8_t *)((0x2D) + 0x20)) 
+# 39 "apa102.c"
+        |= 1 << 
+# 39 "apa102.c" 3
+                0
+# 39 "apa102.c"
+                     ;
+    
+# 40 "apa102.c" 3
+   (*(volatile uint8_t *)((0x2C) + 0x20)) 
+# 40 "apa102.c"
+        |= (1 << 
+# 40 "apa102.c" 3
+                 1
+# 40 "apa102.c"
+                     ) | (1 << 
+# 40 "apa102.c" 3
+                               0
+# 40 "apa102.c"
+                                   );
 }
 
 void apa102_transmit_byte(uint8_t data) {
-
-
-
-
-    for (uint8_t i = 0; i<8; i++){
-        
-# 58 "apa102.c" 3
-       (*(volatile uint8_t *)((0x05) + 0x20)) 
-# 58 "apa102.c"
-                &= ~(1<<
-# 58 "apa102.c" 3
-                        7
-# 58 "apa102.c"
-                           );
-        if ((data>>i)&1) 
-# 59 "apa102.c" 3
-                        (*(volatile uint8_t *)((0x05) + 0x20))
-# 59 "apa102.c"
-                                 |=(1<<
-# 59 "apa102.c" 3
-                                       5
-# 59 "apa102.c"
-                                           );
-        else (
-# 60 "apa102.c" 3
-             (*(volatile uint8_t *)((0x05) + 0x20))
-# 60 "apa102.c"
-                      &=~(1<<
-# 60 "apa102.c" 3
-                             5
-# 60 "apa102.c"
-                                 ));
-        asm volatile("nop");
-        
-# 62 "apa102.c" 3
-       (*(volatile uint8_t *)((0x05) + 0x20)) 
-# 62 "apa102.c"
-                |= (1 << 
-# 62 "apa102.c" 3
+    
+# 44 "apa102.c" 3
+   (*(volatile uint8_t *)((0x2E) + 0x20)) 
+# 44 "apa102.c"
+        = data;
+    while (!(
+# 45 "apa102.c" 3
+            (*(volatile uint8_t *)((0x2D) + 0x20)) 
+# 45 "apa102.c"
+                 & (1 << 
+# 45 "apa102.c" 3
                          7
-# 62 "apa102.c"
-                            );
-        asm volatile("nop");
-    }
-
+# 45 "apa102.c"
+                             ))) {}
 }
 
 void apa102_start(void) {

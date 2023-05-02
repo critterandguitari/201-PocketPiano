@@ -11,15 +11,16 @@
 #define INT_OFF PORTC&=~(1<<2);
 #define DELAY8	{asm volatile("nop");asm volatile("nop");asm volatile("nop");asm volatile("nop");asm volatile("nop");asm volatile("nop");asm volatile("nop");asm volatile("nop");}
 
+#define PO_SIZE 7
 // data peripheral output, buttons and knobs
-uint8_t data_po[7] = {0xFF,0XFF,0XFF,0,0,0,0};  // 3 bytes for buttons, 4 bytes knobs
+uint8_t data_po[PO_SIZE] = {0xFF,0XFF,0XFF,0,0,0,0};  // 3 bytes for buttons, 4 bytes knobs
 uint8_t debounce_timer[21] = {0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0};
 uint8_t buttons[21] = {1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1};
 
 // data peripheral input, all leds
-uint8_t data_pi[9] = {  10,0,0,
-                        20,0,0,
-                        50,0,0};
+uint8_t data_pi[9] = {  0,0,0,
+                        0,0,0,
+                        0,0,0};
 
 extern uint8_t i2c_recv_index;
 extern uint8_t i2c_send_index;
@@ -35,7 +36,7 @@ void i2c_requested() {
     INT_OFF;
     i2c_transmitByte(data_po[i2c_send_index]);
     i2c_send_index++;
-    if (i2c_send_index == 7) i2c_send_index = 0;
+    if (i2c_send_index == PO_SIZE) i2c_send_index = 0;
 }
 
 // short delay in miliseconds (sort of)
@@ -102,12 +103,16 @@ int main(void) {
     
     sei();
     
-    //for(;;){
-        apa102_set_all_leds(0, 0, 0);delay_ms(300);
-        apa102_set_all_leds(100, 0, 0);delay_ms(300);
-        apa102_set_all_leds(0, 100, 0);delay_ms(300);
-        apa102_set_all_leds(0, 0, 100);delay_ms(300);
-    //}
+    for (int i = 0; i <50; i++){
+        apa102_set_all_leds(1, 1, i % 50);delay_ms(30);
+    }
+    for (int i = 0; i <50; i++){
+        apa102_set_all_leds(3, 3, i % 50);delay_ms(30);
+    }
+    for (int i = 0; i <50; i++){
+        apa102_set_all_leds(6, 6, i % 50);delay_ms(30);
+    }
+
     uint8_t ms_count = 0;
     uint8_t button_changed = 0;
     for(;;) {

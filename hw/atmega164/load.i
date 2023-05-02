@@ -1,5 +1,5 @@
 # 1 "load.c"
-# 1 "/Users/owen1/repos/pp22/interface/mcu-i2c/atmega164//"
+# 1 "/Users/owen1/repos/201-PocketPiano/hw/atmega164//"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "load.c"
@@ -474,21 +474,15 @@ void __vector_26 (void) __attribute__ ((signal,used, externally_visible)) ; void
 # 16 "i2c_peripheral.h"
             ;
 # 8 "load.c" 2
-
-
-
-
-
-
-
+# 16 "load.c"
 uint8_t data_po[7] = {0xFF,0XFF,0XFF,0,0,0,0};
 uint8_t debounce_timer[21] = {0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0};
 uint8_t buttons[21] = {1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1};
 
 
-uint8_t data_pi[9] = { 10,0,0,
-                        20,0,0,
-                        50,0,0};
+uint8_t data_pi[9] = { 0,0,0,
+                        0,0,0,
+                        0,0,0};
 
 extern uint8_t i2c_recv_index;
 extern uint8_t i2c_send_index;
@@ -502,9 +496,9 @@ void i2c_received(uint8_t received_data) {
 void i2c_requested() {
 
     
-# 35 "load.c" 3
+# 36 "load.c" 3
    (*(volatile uint8_t *)((0x08) + 0x20))
-# 35 "load.c"
+# 36 "load.c"
    &=~(1<<2);;
     i2c_transmitByte(data_po[i2c_send_index]);
     i2c_send_index++;
@@ -526,33 +520,33 @@ void read_adc(void) {
     uint8_t ch = 0;
     for (ch = 0; ch < 4; ch++) {
         
-# 55 "load.c" 3
-       (*(volatile uint8_t *)(0x7C)) 
-# 55 "load.c"
-             = ch;
-        
 # 56 "load.c" 3
        (*(volatile uint8_t *)(0x7C)) 
 # 56 "load.c"
-             |= (1 << 5);
+             = ch;
         
 # 57 "load.c" 3
-       (*(volatile uint8_t *)(0x7A)) 
+       (*(volatile uint8_t *)(0x7C)) 
 # 57 "load.c"
+             |= (1 << 5);
+        
+# 58 "load.c" 3
+       (*(volatile uint8_t *)(0x7A)) 
+# 58 "load.c"
               = 0xD6;
         while(!(
-# 58 "load.c" 3
+# 59 "load.c" 3
                (*(volatile uint8_t *)(0x7A)) 
-# 58 "load.c"
+# 59 "load.c"
                       & 1<<
-# 58 "load.c" 3
+# 59 "load.c" 3
                            4
-# 58 "load.c"
+# 59 "load.c"
                                ));
         data_po[ch + 3] = 
-# 59 "load.c" 3
+# 60 "load.c" 3
                          (*(volatile uint8_t *)(0x79))
-# 59 "load.c"
+# 60 "load.c"
                              ;
     }
 }
@@ -569,81 +563,81 @@ int main(void) {
 
 
     
-# 74 "load.c" 3
+# 75 "load.c" 3
    (*(volatile uint8_t *)((0X35) + 0x20))
-# 74 "load.c"
+# 75 "load.c"
         |= (1<<
-# 74 "load.c" 3
+# 75 "load.c" 3
                7
-# 74 "load.c"
+# 75 "load.c"
                   );
     
-# 75 "load.c" 3
+# 76 "load.c" 3
    (*(volatile uint8_t *)((0X35) + 0x20))
-# 75 "load.c"
+# 76 "load.c"
         |= (1<<
-# 75 "load.c" 3
+# 76 "load.c" 3
                7
-# 75 "load.c"
+# 76 "load.c"
                   );
 
     delay_ms(1);
 
 
     
-# 80 "load.c" 3
+# 81 "load.c" 3
    (*(volatile uint8_t *)((0x0A) + 0x20)) 
-# 80 "load.c"
+# 81 "load.c"
         = 0;
     
-# 81 "load.c" 3
+# 82 "load.c" 3
    (*(volatile uint8_t *)((0x0B) + 0x20)) 
-# 81 "load.c"
+# 82 "load.c"
          = 0xFF;
 
     
-# 83 "load.c" 3
+# 84 "load.c" 3
    (*(volatile uint8_t *)((0x07) + 0x20)) 
-# 83 "load.c"
+# 84 "load.c"
         &= ~((1<<3)|(1<<4)|(1<<5)|(1<<6)|(1<<7));
     
-# 84 "load.c" 3
+# 85 "load.c" 3
    (*(volatile uint8_t *)((0x08) + 0x20)) 
-# 84 "load.c"
+# 85 "load.c"
          |= ((1<<3)|(1<<4)|(1<<5)|(1<<6)|(1<<7));
 
     
-# 86 "load.c" 3
+# 87 "load.c" 3
    (*(volatile uint8_t *)((0x04) + 0x20)) 
-# 86 "load.c"
+# 87 "load.c"
         &= ~((1<<0)|(1<<1)|(1<<2)|(1<<3)|(1<<4));
     
-# 87 "load.c" 3
+# 88 "load.c" 3
    (*(volatile uint8_t *)((0x05) + 0x20)) 
-# 87 "load.c"
+# 88 "load.c"
          |= ((1<<0)|(1<<1)|(1<<2)|(1<<3)|(1<<4));
 
     
-# 89 "load.c" 3
+# 90 "load.c" 3
    (*(volatile uint8_t *)((0X01) + 0x20)) 
-# 89 "load.c"
+# 90 "load.c"
         &= ~((1<<5)|(1<<6)|(1<<7));
     
-# 90 "load.c" 3
+# 91 "load.c" 3
    (*(volatile uint8_t *)((0X02) + 0x20)) 
-# 90 "load.c"
+# 91 "load.c"
          |= ((1<<5)|(1<<6)|(1<<7));
 
 
     
-# 93 "load.c" 3
+# 94 "load.c" 3
    (*(volatile uint8_t *)((0x07) + 0x20)) 
-# 93 "load.c"
+# 94 "load.c"
         |= (1<<2);
     
-# 94 "load.c" 3
+# 95 "load.c" 3
    (*(volatile uint8_t *)((0x08) + 0x20))
-# 94 "load.c"
+# 95 "load.c"
    &=~(1<<2);;
 
 
@@ -654,16 +648,20 @@ int main(void) {
     i2c_init(0x10);
 
     
-# 103 "load.c" 3
+# 104 "load.c" 3
    __asm__ __volatile__ ("sei" ::: "memory")
-# 103 "load.c"
+# 104 "load.c"
         ;
 
-
-        apa102_set_all_leds(0, 0, 0);delay_ms(300);
-        apa102_set_all_leds(100, 0, 0);delay_ms(300);
-        apa102_set_all_leds(0, 100, 0);delay_ms(300);
-        apa102_set_all_leds(0, 0, 100);delay_ms(300);
+    for (int i = 0; i <50; i++){
+        apa102_set_all_leds(1, 1, i % 50);delay_ms(30);
+    }
+    for (int i = 0; i <50; i++){
+        apa102_set_all_leds(3, 3, i % 50);delay_ms(30);
+    }
+    for (int i = 0; i <50; i++){
+        apa102_set_all_leds(6, 6, i % 50);delay_ms(30);
+    }
 
     uint8_t ms_count = 0;
     uint8_t button_changed = 0;
@@ -689,114 +687,114 @@ int main(void) {
 
 
                 if (i == 0) tmp = (
-# 134 "load.c" 3
-                                  (*(volatile uint8_t *)((0x09) + 0x20)) 
-# 134 "load.c"
-                                       >> 0) & 1;
-                if (i == 1) tmp = (
-# 135 "load.c" 3
-                                  (*(volatile uint8_t *)((0x09) + 0x20)) 
-# 135 "load.c"
-                                       >> 1) & 1;
-                if (i == 2) tmp = (
-# 136 "load.c" 3
-                                  (*(volatile uint8_t *)((0x09) + 0x20)) 
-# 136 "load.c"
-                                       >> 2) & 1;
-                if (i == 3) tmp = (
-# 137 "load.c" 3
-                                  (*(volatile uint8_t *)((0x09) + 0x20)) 
-# 137 "load.c"
-                                       >> 3) & 1;
-
-                if (i == 4) tmp = (
 # 139 "load.c" 3
                                   (*(volatile uint8_t *)((0x09) + 0x20)) 
 # 139 "load.c"
-                                       >> 4) & 1;
-                if (i == 5) tmp = (
+                                       >> 0) & 1;
+                if (i == 1) tmp = (
 # 140 "load.c" 3
                                   (*(volatile uint8_t *)((0x09) + 0x20)) 
 # 140 "load.c"
-                                       >> 5) & 1;
-                if (i == 6) tmp = (
+                                       >> 1) & 1;
+                if (i == 2) tmp = (
 # 141 "load.c" 3
                                   (*(volatile uint8_t *)((0x09) + 0x20)) 
 # 141 "load.c"
-                                       >> 6) & 1;
-                if (i == 7) tmp = (
+                                       >> 2) & 1;
+                if (i == 3) tmp = (
 # 142 "load.c" 3
                                   (*(volatile uint8_t *)((0x09) + 0x20)) 
 # 142 "load.c"
+                                       >> 3) & 1;
+
+                if (i == 4) tmp = (
+# 144 "load.c" 3
+                                  (*(volatile uint8_t *)((0x09) + 0x20)) 
+# 144 "load.c"
+                                       >> 4) & 1;
+                if (i == 5) tmp = (
+# 145 "load.c" 3
+                                  (*(volatile uint8_t *)((0x09) + 0x20)) 
+# 145 "load.c"
+                                       >> 5) & 1;
+                if (i == 6) tmp = (
+# 146 "load.c" 3
+                                  (*(volatile uint8_t *)((0x09) + 0x20)) 
+# 146 "load.c"
+                                       >> 6) & 1;
+                if (i == 7) tmp = (
+# 147 "load.c" 3
+                                  (*(volatile uint8_t *)((0x09) + 0x20)) 
+# 147 "load.c"
                                        >> 7) & 1;
 
                 if (i == 8) tmp = (
-# 144 "load.c" 3
+# 149 "load.c" 3
                                   (*(volatile uint8_t *)((0x06) + 0x20)) 
-# 144 "load.c"
+# 149 "load.c"
                                        >> 3) & 1;
                 if (i == 9) tmp = (
-# 145 "load.c" 3
+# 150 "load.c" 3
                                   (*(volatile uint8_t *)((0x06) + 0x20)) 
-# 145 "load.c"
+# 150 "load.c"
                                        >> 4) & 1;
                 if (i == 10) tmp = (
-# 146 "load.c" 3
+# 151 "load.c" 3
                                    (*(volatile uint8_t *)((0x06) + 0x20)) 
-# 146 "load.c"
+# 151 "load.c"
                                         >> 5) & 1;
                 if (i == 11) tmp = (
-# 147 "load.c" 3
+# 152 "load.c" 3
                                    (*(volatile uint8_t *)((0x06) + 0x20)) 
-# 147 "load.c"
+# 152 "load.c"
                                         >> 6) & 1;
 
                 if (i == 12) tmp = (
-# 149 "load.c" 3
+# 154 "load.c" 3
                                    (*(volatile uint8_t *)((0x06) + 0x20)) 
-# 149 "load.c"
+# 154 "load.c"
                                         >> 7) & 1;
                 if (i == 13) tmp = (
-# 150 "load.c" 3
+# 155 "load.c" 3
                                    (*(volatile uint8_t *)((0X00) + 0x20)) 
-# 150 "load.c"
+# 155 "load.c"
                                         >> 5) & 1;
                 if (i == 14) tmp = (
-# 151 "load.c" 3
+# 156 "load.c" 3
                                    (*(volatile uint8_t *)((0X00) + 0x20)) 
-# 151 "load.c"
+# 156 "load.c"
                                         >> 6) & 1;
                 if (i == 15) tmp = (
-# 152 "load.c" 3
+# 157 "load.c" 3
                                    (*(volatile uint8_t *)((0X00) + 0x20)) 
-# 152 "load.c"
+# 157 "load.c"
                                         >> 7) & 1;
 
                 if (i == 16) tmp = (
-# 154 "load.c" 3
-                                   (*(volatile uint8_t *)((0X03) + 0x20)) 
-# 154 "load.c"
-                                        >> 0) & 1;
-                if (i == 17) tmp = (
-# 155 "load.c" 3
-                                   (*(volatile uint8_t *)((0X03) + 0x20)) 
-# 155 "load.c"
-                                        >> 1) & 1;
-                if (i == 18) tmp = (
-# 156 "load.c" 3
-                                   (*(volatile uint8_t *)((0X03) + 0x20)) 
-# 156 "load.c"
-                                        >> 2) & 1;
-                if (i == 19) tmp = (
-# 157 "load.c" 3
-                                   (*(volatile uint8_t *)((0X03) + 0x20)) 
-# 157 "load.c"
-                                        >> 3) & 1;
-
-                if (i == 20) tmp = (
 # 159 "load.c" 3
                                    (*(volatile uint8_t *)((0X03) + 0x20)) 
 # 159 "load.c"
+                                        >> 0) & 1;
+                if (i == 17) tmp = (
+# 160 "load.c" 3
+                                   (*(volatile uint8_t *)((0X03) + 0x20)) 
+# 160 "load.c"
+                                        >> 1) & 1;
+                if (i == 18) tmp = (
+# 161 "load.c" 3
+                                   (*(volatile uint8_t *)((0X03) + 0x20)) 
+# 161 "load.c"
+                                        >> 2) & 1;
+                if (i == 19) tmp = (
+# 162 "load.c" 3
+                                   (*(volatile uint8_t *)((0X03) + 0x20)) 
+# 162 "load.c"
+                                        >> 3) & 1;
+
+                if (i == 20) tmp = (
+# 164 "load.c" 3
+                                   (*(volatile uint8_t *)((0X03) + 0x20)) 
+# 164 "load.c"
                                         >> 4) & 1;
 
 
@@ -826,9 +824,9 @@ int main(void) {
             data_po[2] = tmp2;
 
             
-# 187 "load.c" 3
+# 192 "load.c" 3
            (*(volatile uint8_t *)((0x08) + 0x20))
-# 187 "load.c"
+# 192 "load.c"
            |=(1<<2);;
             button_changed = 0;
         }

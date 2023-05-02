@@ -4,7 +4,6 @@
 
 #define SCK_DDR DDRB 
 #define SCK PB7
-#define SCK_PORT PORTB
 #define MOSI_DDR DDRB
 #define MOSI PB5
 #define MOSI_PORT PORTB
@@ -12,9 +11,10 @@
 #define SS PB4
 #define SS_PORT PORTB
 
+#define LED_COUNT 3
 
 void apa102_init(void) {
-/*
+
     // have to unfortunately set SS as output
     SS_DDR |= (1 << SS);
     SS_PORT |= (1 << SS);
@@ -38,31 +38,11 @@ void apa102_init(void) {
     // set clock scale to 1/2
     SPSR |= 1 << SPI2X;
     SPCR |= (1 << SPR1) | (1 << SPR0);
-*/
-    
-    // for bit banging
-    MOSI_DDR |= (1 << MOSI);
-    SCK_DDR |= (1 << SCK);
-    
-    MOSI_PORT |= (1 << MOSI);
-    SCK_PORT |= (1 << SCK);
-
 }
 
 void apa102_transmit_byte(uint8_t data) {
-    //SPDR = data;
-    //while (!(SPSR & (1 << SPIF))) {}
-    
-    
-    for (uint8_t i = 0; i<8; i++){
-        SCK_PORT &= ~(1<<SCK);
-        if ((data>>i)&1) MOSI_PORT|=(1<<MOSI);
-        else (MOSI_PORT&=~(1<<MOSI));
-        asm volatile("nop");
-        SCK_PORT |= (1 << SCK);
-        asm volatile("nop");
-    }
-
+    SPDR = data;
+    while (!(SPSR & (1 << SPIF))) {}
 }
 
 void apa102_start(void) {
