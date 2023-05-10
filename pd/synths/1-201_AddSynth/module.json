@@ -1,0 +1,14 @@
+{
+    "display" : "201_FM",
+    "parameters" :  [ 
+        ["float", "shape",   "Shape",   0,1,0.5],
+        ["float", "tone",    "Tone",    0,1,0.5],
+        ["float", "surprise", "Surprise", 0,1,0.5]
+        
+    ],
+    "pages" : [ 
+        ["pg_main","Main",["shape","tone","surprise"]]
+        
+    ]
+}
+

@@ -1,0 +1,16 @@
+#N canvas 460 435 450 300 12;
+#X obj 32 9 inlet;
+#X obj 32 136 list prepend read;
+#X obj 32 33 route read;
+#X obj 32 57 t b;
+#X obj 32 81 i \$1;
+#X obj 32 160 list trim;
+#X obj 32 108 makefilename formants/form-%d.txt;
+#X obj 32 211 array define form-\$1 1027;
+#X connect 0 0 2 0;
+#X connect 1 0 5 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 6 0;
+#X connect 5 0 7 0;
+#X connect 6 0 1 0;
