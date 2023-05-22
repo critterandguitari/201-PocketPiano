@@ -205,7 +205,7 @@ void load_patch() {
     printf("remount sdcard...\n");
     system("umount /sdcard");
     system("mount /dev/mmcblk1p2 /sdcard");
-    system("( cd /sdcard/pd ; pd -nogui -rt -audiobuf 5 -path lib mother.pd ) &");
+    system("/home/root/app/hw/scripts/run-patch.sh");
 }
 
 void error(int num, const char *msg, const char *path) {
