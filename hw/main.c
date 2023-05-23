@@ -206,6 +206,7 @@ void load_patch() {
     system("umount /sdcard");
     system("mount /dev/mmcblk1p2 /sdcard");
     system("/home/root/app/hw/scripts/run-patch.sh");
+    system("/home/root/app/hw/scripts/connect-midi.sh &");
 }
 
 void error(int num, const char *msg, const char *path) {
