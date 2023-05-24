@@ -27,6 +27,7 @@ float timer_get_elapsed(void) {
 // patch loading stuff
 void check_for_reload(); // checks key combo for reloading patch
 void load_patch();
+void toggle_disk_mode();
 
 // osc handlers
 void error(int num, const char *m, const char *path);
@@ -52,7 +53,9 @@ int fd;
 struct pollfd pfd;
 uint8_t int_pin;
 int ret;
+int mode = 0;  // mode of operation, 0 = normal / play mode, 1 = USB file transfer / test mode 
 
+lo_address t; // osc sender
 
 int main() {
 
@@ -87,7 +90,7 @@ int main() {
     printf("opened \n");
 
     // setup osc sender 
-    lo_address t = lo_address_new("localhost", "4000");
+    t = lo_address_new("localhost", "4000");
     //lo_address t = lo_address_new("192.168.1.124", "4000");
 
     // setup osc server and add led method
@@ -121,8 +124,14 @@ int main() {
     i2c_write(&i2c, data_pi, DATA_PI_SIZE);
 
     timer_reset();
+
     //start the patch
+    mode = 0;  // play mode
+    
+    // shouldn't be in disk mode at this point, but just in case disable
+    system("rmmod g_mass_storage");
     load_patch();
+    
     for (;;){
         
         // wait up to 50ms for int pin
@@ -173,7 +182,7 @@ int main() {
             // last one is aux
             if (((buttons >> 20) & 1) != buttons_last[20]){
                 buttons_last[20] = (buttons >> 20) & 1;
-                check_for_reload();
+                check_for_reload();  // only check for reload whe shift is pressed
                 lo_send(t, "/shift", "i", ~(buttons >> 20) & 1);
             }
         }
@@ -190,23 +199,93 @@ int main() {
 }
 
 void check_for_reload(){
-    // reload combo is  shift + keys 13,15,18 (high c#, d#, f#)
+    //  switch to disk mode is shift + keys 13,15,18 (high c#, d#, f#)
+    //  patch is also reloaded bc /sdcard gets mounted read only in disk mode
     if(!buttons_last[13] && !buttons_last[15] && !buttons_last[18] && !buttons_last[20]){
+        printf("CHANGE TO DISKMODE \n");
+        mode++;
+        mode &= 0x1;
+        toggle_disk_mode();
         load_patch();
+    }
+
+    // reload patch, without switching in or out of disk mode is shift + 16, 17, 19 (high e,f,g)
+    if(!buttons_last[16] && !buttons_last[17] && !buttons_last[19] && !buttons_last[20]){
+        printf("RELOAD PATCH \n");
+        load_patch();
+    }
+}
+
+void toggle_disk_mode() {
+
+    // play mode
+    if (mode == 0) {
+        printf("signal pd \n");
+        lo_send(t, "/quitpd", "i", 1);
+        usleep(120000);
+        system("killall pd");
+
+        printf("unmount sdcard...\n");
+        system("umount /sdcard");
+        
+        printf("disable usb file transfer mode...\n");
+        system("rmmod g_mass_storage");
+    }
+
+    // usb drive mode
+    else if (mode == 1){
+        printf("signal pd \n");
+        lo_send(t, "/quitpd", "i", 1);
+        usleep(120000);
+        system("killall pd");
+
+        // in disk mode, need to remount bc files might have changed
+        printf("unmount sdcard...\n");
+        system("umount /sdcard");
+
+        printf("start usb file transfer mode \n");
+        system("rmmod g_mass_storage");
+        system("modprobe g_mass_storage file=/dev/mmcblk1p2 stall=0 removable=1");
     }
 }
 
 void load_patch() {
     printf("(re)loading patch \n");
 
-    printf("signal pd \n");
-    system("killall pd");
+    // play mode
+    if (mode == 0) {
+        printf("signal pd \n");
+        lo_send(t, "/quitpd", "i", 1);
+        usleep(120000);
+        system("killall pd");
 
-    printf("remount sdcard...\n");
-    system("umount /sdcard");
-    system("mount /dev/mmcblk1p2 /sdcard");
-    system("/home/root/app/hw/scripts/run-patch.sh");
-    system("/home/root/app/hw/scripts/connect-midi.sh &");
+        printf("unmount sdcard...\n");
+        system("umount /sdcard");
+        printf("mounting sd card read only...\n");
+        system("mount /dev/mmcblk1p2 /sdcard");
+
+        printf("run main patch\n");
+        system("/home/root/app/hw/scripts/run-patch.sh");
+        system("/home/root/app/hw/scripts/connect-midi.sh &");
+    }
+
+    // usb drive mode
+    else if (mode == 1){
+        printf("signal pd \n");
+        lo_send(t, "/quitpd", "i", 1);
+        usleep(120000);
+        system("killall pd");
+
+        printf("unmount sdcard...\n");
+        system("umount /sdcard");
+        printf("mounting sd card read only...\n");
+        system("mount -o ro /dev/mmcblk1p2 /sdcard");  // in disk mode read only
+
+        printf("run main patch\n");
+        system("/home/root/app/hw/scripts/run-patch.sh");
+        system("/home/root/app/hw/scripts/connect-midi.sh &");
+
+    }
 }
 
 void error(int num, const char *msg, const char *path) {
