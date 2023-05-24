@@ -363,10 +363,24 @@ void map_led_color(uint8_t color, uint8_t *rgb){
 }
 
 
-
 int poweroff_handler(const char *path, const char *types, lo_arg ** argv, int argc, void *data, void *user_data) {
+        
+    uint8_t fl[DATA_PI_SIZE] = {  20,0,5,
+                                          0,0,0,
+                                          0,0,0};
+    
+    // animate while we wait for shutdown        
+    for (;;) {
+        fl[0]=20;fl[1]=0;fl[2]=5;fl[3]=0;fl[4]=0;fl[5]=0;fl[6]=0;fl[7]=0;fl[8]=0;
+        i2c_write(&i2c, fl, DATA_PI_SIZE);
+        usleep(300000); 
+        fl[0]=0;fl[1]=0;fl[2]=0;fl[3]=20;fl[4]=0;fl[5]=5;fl[6]=0;fl[7]=0;fl[8]=0;
+        i2c_write(&i2c, fl, DATA_PI_SIZE);
+        usleep(300000); 
+        fl[0]=0;fl[1]=0;fl[2]=0;fl[3]=0;fl[4]=0;fl[5]=0;fl[6]=20;fl[7]=0;fl[8]=5;
+        i2c_write(&i2c, fl, DATA_PI_SIZE);
+        usleep(300000); 
+    }
+
     return 0;
-}
-
-
-
+}   
