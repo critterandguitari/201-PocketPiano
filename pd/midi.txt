@@ -1,0 +1,17 @@
+note-in-ch     1;
+note-out-ch    1;
+cc-in-ch       1;
+cc-out-ch      1;
+cc-knobt-in   20;
+cc-knobt-out  20;
+cc-knob1-in   21;
+cc-knob1-out  21;
+cc-knob2-in   22;
+cc-knob2-out  22;
+cc-knob3-in   23;
+cc-knob3-out  23;
+clock-in       1;
+clock-out      1;
+clock-thru     1;
+program-in-ch  1;
+program-out-ch 1;
