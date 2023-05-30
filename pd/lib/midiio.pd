@@ -1,0 +1,17 @@
+#N canvas 643 97 577 427 10;
+#X obj 58 115 s knob1;
+#X obj 145 116 s knob2;
+#X obj 225 115 s knob3;
+#X obj 323 81 notein \$1;
+#X obj 430 80 pgmin \$1;
+#X obj 58 81 ctlin \$3 \$1;
+#X obj 145 82 ctlin \$4 \$1;
+#X obj 225 82 ctlin \$5 \$1;
+#X obj 52 189 ctlout \$3 \$2;
+#X obj 140 189 ctlout \$4 \$2;
+#X obj 229 189 ctlout \$5 \$2;
+#X obj 336 188 noteout \$2;
+#X obj 421 188 pgmout \$2;
+#X connect 5 0 0 0;
+#X connect 6 0 1 0;
+#X connect 7 0 2 0;
