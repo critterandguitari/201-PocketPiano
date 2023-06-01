@@ -1,11 +1,14 @@
 #!/bin/bash
 
+# allow USB midi to show up
+sleep 2
+
+# unconnect everything
+aconnect -x
+
 # connect tty midi
 aconnect "ttymidi:0" "Pure Data:0"
 aconnect "Pure Data:1" "ttymidi:1"
-
-# allow USB midi to show up
-sleep 2
 
 # check for USB midi devices and connect 
 # Use aplaymidi -l to get list of MIDI devices
