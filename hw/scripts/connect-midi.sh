@@ -36,4 +36,4 @@ pure_data=${pure_data%:}
 # Connect the last MIDI port to the Pure Data client
 echo "Connecting MIDI port $last_port to Pure Data client $pure_data" > /tmp/midilog
 aconnect $last_port:0 $pure_data:0
-
+aconnect $pure_data:1 $last_port:0
