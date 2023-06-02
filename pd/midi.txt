@@ -1,10 +1,16 @@
 input-channel 1;
 output-channel 1;
-cc-knob1 20;
-cc-knob2 21;
-cc-knob3 22;
+cc-knob1 21;
+cc-knob2 22;
+cc-knob3 23;
 clock-in-enable 1;
 clock-out-enable 1;
-transport-out-enable 1;
 transport-in-enable 1;
-transport-thur-enable 0;
+transport-out-enable 1;
+note-in-enable 1;
+note-out-enable 1;
+cc-in-enable 1;
+cc-out-enable 1;
+pc-in-enable 1;
+pc-out-enable 1;
+
