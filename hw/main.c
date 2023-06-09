@@ -106,7 +106,7 @@ int main() {
     usleep(10000); 
 
     // check if this is a first time boot and we need to enlarge second partition
-/*    if (access("/etc/app-sdcard-format.lock", F_OK) != -1) {
+    if (access("/etc/app-sdcard-format.lock", F_OK) != -1) {
         printf("partition 2 already resized \n");
     } else {
         printf("resizing partition \n");
@@ -118,7 +118,7 @@ int main() {
         i2c_write(&i2c, final_leds, DATA_PI_SIZE);
          
         system("/home/root/app/hw/scripts/part-enlarge.sh");
-    }*/
+    }
 
 
     i2c_write(&i2c, data_pi, DATA_PI_SIZE);
