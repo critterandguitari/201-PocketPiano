@@ -1,0 +1,13 @@
+#N canvas 1185 340 731 427 12;
+#X obj 35 24 inlet;
+#X obj 35 198 soundfiler;
+#X obj 35 120 list prepend read -resize;
+#X obj 35 48 route read;
+#X obj 35 168 list trim;
+#X obj 391 219 array define \$2-\$1;
+#X obj 34 144 list append \$2-\$1;
+#X connect 0 0 3 0;
+#X connect 2 0 6 0;
+#X connect 3 0 2 0;
+#X connect 4 0 1 0;
+#X connect 6 0 4 0;

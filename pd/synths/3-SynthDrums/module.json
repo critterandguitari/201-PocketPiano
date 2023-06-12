@@ -1,0 +1,14 @@
+{
+    "display" : "201_SynthDrums",
+    "parameters" :  [ 
+        ["float", "knob1",   "Shape",   0,1,0.5],
+        ["float", "knob2",    "Tone",    0,1,0.5],
+        ["float", "knob3", "Surprise", 0,1,0.5]
+        
+    ],
+    "pages" : [ 
+        ["pg_main","Main",["shape","tone","surprise"]]
+        
+    ]
+}
+

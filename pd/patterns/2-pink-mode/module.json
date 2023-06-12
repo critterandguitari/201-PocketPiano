@@ -1,0 +1,10 @@
+{
+    "display" : "201_Arp",
+    "parameters" :  [ 
+        ["int","Pink Mode","Select Type",1,12,1]
+     ],
+    "pages" : [ 
+        ["pg_main","Main",["arp_select"]]
+    ]
+}
+

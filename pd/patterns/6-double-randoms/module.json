@@ -1,0 +1,10 @@
+{
+    "display" : "double random",
+    "parameters" :  [ 
+        ["int","arp_select","Select Type",1,12,1]
+     ],
+    "pages" : [ 
+        ["pg_main","Main",["arp_select"]]
+    ]
+}
+
