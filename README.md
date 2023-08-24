@@ -4,7 +4,7 @@ The software for the pocket piano consists of two parts: a PureData (Pd) patch a
 
 The Pd patch handles all the heavy lifting: audio synthesis, MIDI, sequencing, loading pattern and synth modules, etc. It is designed to be platform-independent; it can be run on any machine with Pd installed. However, it relies on several external objects that must also be installed.
 
-The interface program provides the controls for the Pd patch: keys, knobs, and LEDs. They communicate via Open Sound Control (OSC) messages. Currently, the interface program is a C program that runs on the hardware, in this case, an i.MX6 processor running Yocto Linux. It checks for key presses and knob movement and sends these events to the Pd patch as OSC messages. It receives OSC messages from the Pd patch to set the LEDs.
+The interface program provides the controls for the Pd patch: keys, knobs, and LEDs. The interface program and Pd communicate via Open Sound Control (OSC) messages. Currently, the interface program is a C program that runs on the hardware, in this case, an i.MX6 processor running Yocto Linux. It checks for key presses and knob movement and sends these events to the Pd patch as OSC messages. It receives OSC messages from the Pd patch to set the LEDs.
 
 ## Pd Patch 
 
