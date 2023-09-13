@@ -612,9 +612,9 @@ main:
 .L18:
 .LBB8:
 	.loc 1 107 9 is_stmt 1 discriminator 3 view .LVU181
-	mov r20,r28
-	ldi r22,lo8(1)
-	ldi r24,lo8(1)
+	ldi r20,lo8(6)
+	mov r22,r28
+	ldi r24,lo8(6)
 	call apa102_set_all_leds
 .LVL21:
 	.loc 1 107 43 discriminator 3 view .LVU182
@@ -655,8 +655,8 @@ main:
 .LBB10:
 	.loc 1 113 9 is_stmt 1 discriminator 3 view .LVU191
 	mov r20,r28
-	ldi r22,lo8(6)
-	ldi r24,lo8(6)
+	ldi r22,lo8(1)
+	ldi r24,lo8(1)
 	call apa102_set_all_leds
 .LVL25:
 	.loc 1 113 43 discriminator 3 view .LVU192
@@ -1410,18 +1410,18 @@ data_po:
 	.uleb128 0x1
 	.byte	0x68
 	.uleb128 0x1
-	.byte	0x31
+	.byte	0x36
 	.uleb128 0xe
 	.uleb128 0x1
 	.byte	0x66
-	.uleb128 0x1
-	.byte	0x31
-	.uleb128 0xe
-	.uleb128 0x1
-	.byte	0x64
 	.uleb128 0x2
 	.byte	0x8c
 	.sleb128 0
+	.uleb128 0xe
+	.uleb128 0x1
+	.byte	0x64
+	.uleb128 0x1
+	.byte	0x36
 	.byte	0
 	.uleb128 0xf
 	.long	.LVL22
@@ -1502,12 +1502,12 @@ data_po:
 	.uleb128 0x1
 	.byte	0x68
 	.uleb128 0x1
-	.byte	0x36
+	.byte	0x31
 	.uleb128 0xe
 	.uleb128 0x1
 	.byte	0x66
 	.uleb128 0x1
-	.byte	0x36
+	.byte	0x31
 	.uleb128 0xe
 	.uleb128 0x1
 	.byte	0x64
@@ -2946,6 +2946,8 @@ data_po:
 	.section	.debug_line,"",@progbits
 .Ldebug_line0:
 	.section	.debug_str,"MS",@progbits,1
+.LASF35:
+	.string	"/Users/owen1/repos/201-PocketPiano/controllers/bbimx/atmega164"
 .LASF27:
 	.string	"apa102_init"
 .LASF17:
@@ -3008,8 +3010,8 @@ data_po:
 	.string	"time"
 .LASF8:
 	.string	"long long int"
-.LASF35:
-	.string	"/Users/owen1/repos/201-PocketPiano/hw/atmega164"
+.LASF15:
+	.string	"i2c_send_index"
 .LASF3:
 	.string	"uint16_t"
 .LASF25:
@@ -3026,8 +3028,6 @@ data_po:
 	.string	"apa102_set_led"
 .LASF39:
 	.string	"received_data"
-.LASF15:
-	.string	"i2c_send_index"
 .LASF31:
 	.string	"apa102_start"
 	.ident	"GCC: (Homebrew AVR GCC 9.3.0_3) 9.3.0"

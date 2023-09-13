@@ -789,6 +789,8 @@ i2c_recv_index:
 	.section	.debug_line,"",@progbits
 .Ldebug_line0:
 	.section	.debug_str,"MS",@progbits,1
+.LASF16:
+	.string	"/Users/owen1/repos/201-PocketPiano/controllers/bbimx/atmega164"
 .LASF9:
 	.string	"i2c_recv"
 .LASF20:
@@ -821,15 +823,13 @@ i2c_recv_index:
 	.string	"long long int"
 .LASF12:
 	.string	"i2c_stop"
-.LASF16:
-	.string	"/Users/owen1/repos/201-PocketPiano/hw/atmega164"
+.LASF8:
+	.string	"i2c_send_index"
 .LASF11:
 	.string	"__vector_26"
 .LASF3:
 	.string	"long int"
 .LASF0:
 	.string	"signed char"
-.LASF8:
-	.string	"i2c_send_index"
 	.ident	"GCC: (Homebrew AVR GCC 9.3.0_3) 9.3.0"
 .global __do_clear_bss

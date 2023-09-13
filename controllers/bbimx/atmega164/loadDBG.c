@@ -6,6 +6,10 @@
 #include "apa102.h"
 #include "i2c_peripheral.h"
 
+// for debug
+#define DBG_ON PORTA|=(1<<4);
+#define DBG_OFF PORTA&=~(1<<4);
+
 #define I2C_ADDR 0x10
 #define INT_ON PORTC|=(1<<2);
 #define INT_OFF PORTC&=~(1<<2);
@@ -94,6 +98,10 @@ int main(void) {
     DDRC |= (1<<2);
     INT_OFF;
     
+    // for dbg
+    PORTA |= (1<<4);
+    DBG_OFF;
+
     // init LEDs
     apa102_init();
 
@@ -103,14 +111,24 @@ int main(void) {
     
     sei();
     
+    // test LEDs
+    int i = 0;
+    for (;;){
+        i++;
+        DBG_ON;
+        apa102_set_all_leds(1, 1, i % 50);
+        DBG_OFF;
+        delay_ms(30);
+    }
+
     for (int i = 0; i <50; i++){
-        apa102_set_all_leds(6,  i % 50, 6);delay_ms(30);
+        apa102_set_all_leds(1, 1, i % 50);delay_ms(30);
     }
     for (int i = 0; i <50; i++){
         apa102_set_all_leds(3, 3, i % 50);delay_ms(30);
     }
     for (int i = 0; i <50; i++){
-        apa102_set_all_leds(1, 1, i % 50);delay_ms(30);
+        apa102_set_all_leds(6, 6, i % 50);delay_ms(30);
     }
 
     uint8_t ms_count = 0;

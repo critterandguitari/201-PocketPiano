@@ -2,47 +2,34 @@
 #include <stdbool.h>
 #include "apa102.h"
 
-#define SCK_DDR DDRB 
-#define SCK PB7
-#define MOSI_DDR DDRB
-#define MOSI PB5
-#define MOSI_PORT PORTB
-#define SS_DDR DDRB
-#define SS PB4
-#define SS_PORT PORTB
+#define DATA_HI PORTB|=(1<<5);
+#define DATA_LOW PORTB&=~(1<<5);
+
+#define SCK_HI PORTB|=(1<<7);
+#define SCK_LOW PORTB&=~(1<<7);
 
 #define LED_COUNT 3
 
 void apa102_init(void) {
-
-    // have to unfortunately set SS as output
-    SS_DDR |= (1 << SS);
-    SS_PORT |= (1 << SS);
-
     
-    MOSI_DDR |= (1 << MOSI);
-    SCK_DDR |= (1 << SCK);
+    DDRB |= ((1<<5)|(1<<7));
+    PORTB |= ((1<<5)|(1<<7));
 
-    // mosi high
-    MOSI_PORT |= (1 << MOSI);
-
-    // enable spi
-    SPCR |= (1 << SPE);
-
-    // set as master
-    SPCR |= 1 << MSTR;
-
-    // set clock polarity/phase to mode 3
-    SPCR |= (1 << CPOL) | (1 << CPHA);
-
-    // set clock scale to 1/2
-    SPSR |= 1 << SPI2X;
-    SPCR |= (1 << SPR1) | (1 << SPR0);
 }
 
 void apa102_transmit_byte(uint8_t data) {
-    SPDR = data;
-    while (!(SPSR & (1 << SPIF))) {}
+    for (int i = 0; i < 8; ++i) {
+        if (data & 0x80) {
+            DATA_HI;
+        } else {
+            DATA_LOW;
+        }
+        __asm__ __volatile__ ("nop");
+        SCK_LOW; // Clock goes low: Data is shifted
+        __asm__ __volatile__ ("nop");
+        SCK_HI;  // Clock goes high: Data is sampled
+        data <<= 1;
+    }
 }
 
 void apa102_start(void) {

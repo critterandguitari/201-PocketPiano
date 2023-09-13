@@ -1,5 +1,5 @@
 # 1 "load.c"
-# 1 "/Users/owen1/repos/201-PocketPiano/hw/atmega164//"
+# 1 "/Users/owen1/repos/201-PocketPiano/controllers/bbimx/atmega164//"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "load.c"
@@ -654,13 +654,13 @@ int main(void) {
         ;
 
     for (int i = 0; i <50; i++){
-        apa102_set_all_leds(1, 1, i % 50);delay_ms(30);
+        apa102_set_all_leds(6, i % 50, 6);delay_ms(30);
     }
     for (int i = 0; i <50; i++){
         apa102_set_all_leds(3, 3, i % 50);delay_ms(30);
     }
     for (int i = 0; i <50; i++){
-        apa102_set_all_leds(6, 6, i % 50);delay_ms(30);
+        apa102_set_all_leds(1, 1, i % 50);delay_ms(30);
     }
 
     uint8_t ms_count = 0;

@@ -8,7 +8,7 @@ The controller program provides the controls for the Pd patch: keys, knobs, and 
 
 ## Pd Patch 
 
-On the Pd side, things are divided into two parts: a mother patch and pattern / synth module patches. The mother patch (mother.pd) communicates with the hardware (via OSC) and handles MIDI, Presets, sequencing, and loading of the pattern and synth module patches. Extra files and helper patches are included in the lib folder.
+On the Pd side, things are divided into two parts: a mother patch and pattern / synth module patches. The mother patch (mother.pd) communicates with the controller (via OSC) and handles MIDI, Presets, sequencing, and loading of the pattern and synth module patches. Extra files and helper patches are included in the lib folder.
 
 The modules are designed to be self-contained patches that are dynamically loaded by mother.pd during initialization. To the mother patch, the module patches are black boxes: mother.pd sends MIDI notes and knob values in and gets sound out. For the modules, we decided to use the same format as Orac (a virtual modular synthesizer for the Organelle an other platforms). Orac can load modules for the 201 Pocket Piano, and modules may developed using the same method as one uses to create Orac modules. It should be noted that while modules for the 201 may be run inside Orac, it is not possible to run any random Orac module on the 201 without modification. The mother patch requires each module to have the exact same set of parameters, where in Orac, a module can have any number of parameters.   
 

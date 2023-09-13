@@ -1,5 +1,5 @@
 # 1 "apa102.c"
-# 1 "/Users/owen1/repos/201-PocketPiano/hw/atmega164//"
+# 1 "/Users/owen1/repos/201-PocketPiano/controllers/bbimx/atmega164//"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "apa102.c"
@@ -214,137 +214,51 @@ void apa102_end(void);
 void apa102_set_led(uint8_t r, uint8_t g, uint8_t b);
 void apa102_set_all_leds(uint8_t r, uint8_t g, uint8_t b);
 # 4 "apa102.c" 2
-# 16 "apa102.c"
+# 13 "apa102.c"
 void apa102_init(void) {
 
-
     
-# 19 "apa102.c" 3
+# 15 "apa102.c" 3
    (*(volatile uint8_t *)((0x04) + 0x20)) 
-# 19 "apa102.c"
-          |= (1 << 
-# 19 "apa102.c" 3
-                   4
-# 19 "apa102.c"
-                     );
+# 15 "apa102.c"
+        |= ((1<<5)|(1<<7));
     
-# 20 "apa102.c" 3
+# 16 "apa102.c" 3
    (*(volatile uint8_t *)((0x05) + 0x20)) 
-# 20 "apa102.c"
-           |= (1 << 
-# 20 "apa102.c" 3
-                    4
-# 20 "apa102.c"
-                      );
+# 16 "apa102.c"
+         |= ((1<<5)|(1<<7));
 
-
-    
-# 23 "apa102.c" 3
-   (*(volatile uint8_t *)((0x04) + 0x20)) 
-# 23 "apa102.c"
-            |= (1 << 
-# 23 "apa102.c" 3
-                     5
-# 23 "apa102.c"
-                         );
-    
-# 24 "apa102.c" 3
-   (*(volatile uint8_t *)((0x04) + 0x20)) 
-# 24 "apa102.c"
-           |= (1 << 
-# 24 "apa102.c" 3
-                    7
-# 24 "apa102.c"
-                       );
-
-
-    
-# 27 "apa102.c" 3
-   (*(volatile uint8_t *)((0x05) + 0x20)) 
-# 27 "apa102.c"
-             |= (1 << 
-# 27 "apa102.c" 3
-                      5
-# 27 "apa102.c"
-                          );
-
-
-    
-# 30 "apa102.c" 3
-   (*(volatile uint8_t *)((0x2C) + 0x20)) 
-# 30 "apa102.c"
-        |= (1 << 
-# 30 "apa102.c" 3
-                 6
-# 30 "apa102.c"
-                    );
-
-
-    
-# 33 "apa102.c" 3
-   (*(volatile uint8_t *)((0x2C) + 0x20)) 
-# 33 "apa102.c"
-        |= 1 << 
-# 33 "apa102.c" 3
-                4
-# 33 "apa102.c"
-                    ;
-
-
-    
-# 36 "apa102.c" 3
-   (*(volatile uint8_t *)((0x2C) + 0x20)) 
-# 36 "apa102.c"
-        |= (1 << 
-# 36 "apa102.c" 3
-                 3
-# 36 "apa102.c"
-                     ) | (1 << 
-# 36 "apa102.c" 3
-                               2
-# 36 "apa102.c"
-                                   );
-
-
-    
-# 39 "apa102.c" 3
-   (*(volatile uint8_t *)((0x2D) + 0x20)) 
-# 39 "apa102.c"
-        |= 1 << 
-# 39 "apa102.c" 3
-                0
-# 39 "apa102.c"
-                     ;
-    
-# 40 "apa102.c" 3
-   (*(volatile uint8_t *)((0x2C) + 0x20)) 
-# 40 "apa102.c"
-        |= (1 << 
-# 40 "apa102.c" 3
-                 1
-# 40 "apa102.c"
-                     ) | (1 << 
-# 40 "apa102.c" 3
-                               0
-# 40 "apa102.c"
-                                   );
 }
 
 void apa102_transmit_byte(uint8_t data) {
-    
-# 44 "apa102.c" 3
-   (*(volatile uint8_t *)((0x2E) + 0x20)) 
-# 44 "apa102.c"
-        = data;
-    while (!(
-# 45 "apa102.c" 3
-            (*(volatile uint8_t *)((0x2D) + 0x20)) 
-# 45 "apa102.c"
-                 & (1 << 
-# 45 "apa102.c" 3
-                         7
-# 45 "apa102.c"
-                             ))) {}
+    for (int i = 0; i < 8; ++i) {
+        if (data & 0x80) {
+            
+# 23 "apa102.c" 3
+           (*(volatile uint8_t *)((0x05) + 0x20))
+# 23 "apa102.c"
+           |=(1<<5);;
+        } else {
+            
+# 25 "apa102.c" 3
+           (*(volatile uint8_t *)((0x05) + 0x20))
+# 25 "apa102.c"
+           &=~(1<<5);;
+        }
+        __asm__ __volatile__ ("nop");
+        
+# 28 "apa102.c" 3
+       (*(volatile uint8_t *)((0x05) + 0x20))
+# 28 "apa102.c"
+       &=~(1<<7);;
+        __asm__ __volatile__ ("nop");
+        
+# 30 "apa102.c" 3
+       (*(volatile uint8_t *)((0x05) + 0x20))
+# 30 "apa102.c"
+       |=(1<<7);;
+        data <<= 1;
+    }
 }
 
 void apa102_start(void) {
