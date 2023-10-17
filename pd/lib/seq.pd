@@ -95,6 +95,7 @@
 write read clear, f 87;
 #X obj 1340 192 t b b;
 #X msg 1339 226 clear;
+#X obj 977 448 s midi-start-out;
 #X connect 0 0 40 0;
 #X connect 1 0 20 0;
 #X connect 2 0 20 0;
