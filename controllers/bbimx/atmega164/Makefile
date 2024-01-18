@@ -1,4 +1,4 @@
-MCU=atmega164p
+MCU=atmega164a
 CC=avr-gcc
 OBJCOPY=avr-objcopy
 # optimize for size:
@@ -28,7 +28,7 @@ load.o : load.c apa102.c i2c_peripheral.c
 # you need to erase first before loading the program.
 # load (program) the software into the eeprom:
 load: load.hex
-	avrdude -p atmega164p -c usbtiny -U flash:w:load.hex 
+	avrdude -p atmega164a -c usbtiny -U flash:w:load.hex 
 
 #-------------------
 clean:
