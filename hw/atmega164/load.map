@@ -543,19 +543,19 @@ END GROUP
  .debug_frame   0x0000000000000080       0x94 apa102.o
  .debug_frame   0x0000000000000114       0x9c i2c_peripheral.o
 
-.debug_str      0x0000000000000000      0x5b8
+.debug_str      0x0000000000000000      0x5a9
  *(.debug_str)
  .debug_str     0x0000000000000000      0x255 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/../../../../../../avr/lib/avr5/crtatmega164a.o
- .debug_str     0x0000000000000255      0x26a load.o
-                                        0x2a8 (size before relaxing)
- .debug_str     0x00000000000004bf       0x34 apa102.o
-                                        0x1d8 (size before relaxing)
- .debug_str     0x00000000000004f3       0x3f i2c_peripheral.o
-                                        0x1d4 (size before relaxing)
- .debug_str     0x0000000000000532       0x86 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_exit.o)
- .debug_str     0x00000000000005b8       0x86 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_copy_data.o)
- .debug_str     0x00000000000005b8       0x86 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_clear_bss.o)
- .debug_str     0x00000000000005b8       0x86 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_umulhisi3.o)
+ .debug_str     0x0000000000000255      0x25b load.o
+                                        0x299 (size before relaxing)
+ .debug_str     0x00000000000004b0       0x34 apa102.o
+                                        0x1c9 (size before relaxing)
+ .debug_str     0x00000000000004e4       0x3f i2c_peripheral.o
+                                        0x1c5 (size before relaxing)
+ .debug_str     0x0000000000000523       0x86 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_exit.o)
+ .debug_str     0x00000000000005a9       0x86 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_copy_data.o)
+ .debug_str     0x00000000000005a9       0x86 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_clear_bss.o)
+ .debug_str     0x00000000000005a9       0x86 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_umulhisi3.o)
 
 .debug_loc      0x0000000000000000      0x6b3
  *(.debug_loc)

@@ -2946,8 +2946,6 @@ data_po:
 	.section	.debug_line,"",@progbits
 .Ldebug_line0:
 	.section	.debug_str,"MS",@progbits,1
-.LASF35:
-	.string	"/Users/owen1/repos/201-PocketPiano/controllers/bbimx/atmega164"
 .LASF27:
 	.string	"apa102_init"
 .LASF17:
@@ -3010,8 +3008,8 @@ data_po:
 	.string	"time"
 .LASF8:
 	.string	"long long int"
-.LASF15:
-	.string	"i2c_send_index"
+.LASF35:
+	.string	"/Users/owen1/repos/201-PocketPiano/hw/atmega164"
 .LASF3:
 	.string	"uint16_t"
 .LASF25:
@@ -3028,6 +3026,8 @@ data_po:
 	.string	"apa102_set_led"
 .LASF39:
 	.string	"received_data"
+.LASF15:
+	.string	"i2c_send_index"
 .LASF31:
 	.string	"apa102_start"
 	.ident	"GCC: (Homebrew AVR GCC 9.3.0_3) 9.3.0"

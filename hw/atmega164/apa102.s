@@ -1334,8 +1334,6 @@ apa102_set_all_leds:
 	.section	.debug_line,"",@progbits
 .Ldebug_line0:
 	.section	.debug_str,"MS",@progbits,1
-.LASF17:
-	.string	"/Users/owen1/repos/201-PocketPiano/controllers/bbimx/atmega164"
 .LASF7:
 	.string	"apa102_set_all_leds"
 .LASF19:
@@ -1364,6 +1362,8 @@ apa102_set_all_leds:
 	.string	"apa102_transmit_byte"
 .LASF5:
 	.string	"long long int"
+.LASF17:
+	.string	"/Users/owen1/repos/201-PocketPiano/hw/atmega164"
 .LASF3:
 	.string	"long int"
 .LASF10:
