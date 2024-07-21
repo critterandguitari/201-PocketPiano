@@ -1208,10 +1208,10 @@ data_pi:
 .global	buttons
 	.section	.data.buttons,"aw"
 	.type	buttons, @object
-	.size	buttons, 21
+	.size	buttons, 24
 buttons:
 	.ascii	"\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001"
-	.ascii	"\001\001\001\001\001\001"
+	.ascii	"\001\001\001\001\001\001\001\001\001"
 .global	debounce_timer
 	.section	.bss.debounce_timer,"aw",@nobits
 	.type	debounce_timer, @object
@@ -1233,7 +1233,7 @@ data_po:
 	.file 4 "apa102.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.long	0x4eb
+	.long	0x4fb
 	.word	0x4
 	.long	.Ldebug_abbrev0
 	.byte	0x4
@@ -1327,18 +1327,25 @@ data_po:
 	.uleb128 0x5
 	.byte	0x3
 	.long	debounce_timer
+	.uleb128 0x5
+	.long	0x2c
+	.long	0xd5
+	.uleb128 0x6
+	.long	0x52
+	.byte	0x17
+	.byte	0
 	.uleb128 0x7
 	.long	.LASF12
 	.byte	0x1
 	.byte	0x12
 	.byte	0x9
-	.long	0xa3
+	.long	0xc5
 	.uleb128 0x5
 	.byte	0x3
 	.long	buttons
 	.uleb128 0x5
 	.long	0x2c
-	.long	0xe7
+	.long	0xf7
 	.uleb128 0x6
 	.long	0x52
 	.byte	0x8
@@ -1348,7 +1355,7 @@ data_po:
 	.byte	0x1
 	.byte	0x15
 	.byte	0x9
-	.long	0xd7
+	.long	0xe7
 	.uleb128 0x5
 	.byte	0x3
 	.long	data_pi
@@ -1374,7 +1381,7 @@ data_po:
 	.long	.LFE8-.LFB8
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x34f
+	.long	0x35f
 	.uleb128 0xa
 	.long	.LASF16
 	.byte	0x1
@@ -1393,7 +1400,7 @@ data_po:
 	.long	.LVUS6
 	.uleb128 0xb
 	.long	.Ldebug_ranges0+0
-	.long	0x1a1
+	.long	0x1b1
 	.uleb128 0xc
 	.string	"i"
 	.byte	0x1
@@ -1404,8 +1411,8 @@ data_po:
 	.long	.LVUS7
 	.uleb128 0xd
 	.long	.LVL21
-	.long	0x49a
-	.long	0x18c
+	.long	0x4aa
+	.long	0x19c
 	.uleb128 0xe
 	.uleb128 0x1
 	.byte	0x68
@@ -1425,7 +1432,7 @@ data_po:
 	.byte	0
 	.uleb128 0xf
 	.long	.LVL22
-	.long	0x3dd
+	.long	0x3ed
 	.uleb128 0xe
 	.uleb128 0x6
 	.byte	0x68
@@ -1441,7 +1448,7 @@ data_po:
 	.uleb128 0x10
 	.long	.LBB9
 	.long	.LBE9-.LBB9
-	.long	0x1eb
+	.long	0x1fb
 	.uleb128 0x11
 	.string	"i"
 	.byte	0x1
@@ -1450,8 +1457,8 @@ data_po:
 	.long	0x3f
 	.uleb128 0xd
 	.long	.LVL23
-	.long	0x49a
-	.long	0x1d6
+	.long	0x4aa
+	.long	0x1e6
 	.uleb128 0xe
 	.uleb128 0x1
 	.byte	0x68
@@ -1471,7 +1478,7 @@ data_po:
 	.byte	0
 	.uleb128 0xf
 	.long	.LVL24
-	.long	0x3dd
+	.long	0x3ed
 	.uleb128 0xe
 	.uleb128 0x6
 	.byte	0x68
@@ -1487,7 +1494,7 @@ data_po:
 	.uleb128 0x10
 	.long	.LBB10
 	.long	.LBE10-.LBB10
-	.long	0x235
+	.long	0x245
 	.uleb128 0x11
 	.string	"i"
 	.byte	0x1
@@ -1496,8 +1503,8 @@ data_po:
 	.long	0x3f
 	.uleb128 0xd
 	.long	.LVL25
-	.long	0x49a
-	.long	0x220
+	.long	0x4aa
+	.long	0x230
 	.uleb128 0xe
 	.uleb128 0x1
 	.byte	0x68
@@ -1517,7 +1524,7 @@ data_po:
 	.byte	0
 	.uleb128 0xf
 	.long	.LVL26
-	.long	0x3dd
+	.long	0x3ed
 	.uleb128 0xe
 	.uleb128 0x6
 	.byte	0x68
@@ -1532,7 +1539,7 @@ data_po:
 	.byte	0
 	.uleb128 0xb
 	.long	.Ldebug_ranges0+0x18
-	.long	0x26b
+	.long	0x27b
 	.uleb128 0xc
 	.string	"i"
 	.byte	0x1
@@ -1555,7 +1562,7 @@ data_po:
 	.byte	0
 	.uleb128 0xb
 	.long	.Ldebug_ranges0+0x70
-	.long	0x2c9
+	.long	0x2d9
 	.uleb128 0xa
 	.long	.LASF18
 	.byte	0x1
@@ -1594,8 +1601,8 @@ data_po:
 	.byte	0
 	.uleb128 0xd
 	.long	.LVL15
-	.long	0x3dd
-	.long	0x2e1
+	.long	0x3ed
+	.long	0x2f1
 	.uleb128 0xe
 	.uleb128 0x6
 	.byte	0x68
@@ -1609,11 +1616,11 @@ data_po:
 	.byte	0
 	.uleb128 0x13
 	.long	.LVL16
-	.long	0x4a6
+	.long	0x4b6
 	.uleb128 0xd
 	.long	.LVL17
-	.long	0x4b2
-	.long	0x314
+	.long	0x4c2
+	.long	0x324
 	.uleb128 0xe
 	.uleb128 0x6
 	.byte	0x68
@@ -1639,8 +1646,8 @@ data_po:
 	.byte	0
 	.uleb128 0xd
 	.long	.LVL18
-	.long	0x4be
-	.long	0x327
+	.long	0x4ce
+	.long	0x337
 	.uleb128 0xe
 	.uleb128 0x1
 	.byte	0x68
@@ -1649,13 +1656,13 @@ data_po:
 	.byte	0
 	.uleb128 0x13
 	.long	.LVL29
-	.long	0x34f
+	.long	0x35f
 	.uleb128 0x13
 	.long	.LVL30
-	.long	0x3b3
+	.long	0x3c3
 	.uleb128 0xf
 	.long	.LVL60
-	.long	0x3dd
+	.long	0x3ed
 	.uleb128 0xe
 	.uleb128 0x6
 	.byte	0x68
@@ -1678,11 +1685,11 @@ data_po:
 	.long	.LFE7-.LFB7
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x3b3
+	.long	0x3c3
 	.uleb128 0x10
 	.long	.LBB6
 	.long	.LBE6-.LBB6
-	.long	0x3a0
+	.long	0x3b0
 	.uleb128 0xc
 	.string	"i"
 	.byte	0x1
@@ -1693,20 +1700,20 @@ data_po:
 	.long	.LVUS4
 	.uleb128 0x13
 	.long	.LVL11
-	.long	0x4ca
+	.long	0x4da
 	.uleb128 0x13
 	.long	.LVL12
-	.long	0x4ca
+	.long	0x4da
 	.uleb128 0x13
 	.long	.LVL13
-	.long	0x4ca
+	.long	0x4da
 	.byte	0
 	.uleb128 0x13
 	.long	.LVL10
-	.long	0x4d6
+	.long	0x4e6
 	.uleb128 0x15
 	.long	.LVL14
-	.long	0x4e2
+	.long	0x4f2
 	.byte	0
 	.uleb128 0x14
 	.long	.LASF22
@@ -1717,7 +1724,7 @@ data_po:
 	.long	.LFE6-.LFB6
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x3dd
+	.long	0x3ed
 	.uleb128 0xc
 	.string	"ch"
 	.byte	0x1
@@ -1736,7 +1743,7 @@ data_po:
 	.long	.LFE5-.LFB5
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x41b
+	.long	0x42b
 	.uleb128 0x16
 	.long	.LASF37
 	.byte	0x1
@@ -1768,9 +1775,9 @@ data_po:
 	.long	.LFE4-.LFB4
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x455
+	.long	0x465
 	.uleb128 0x18
-	.long	0x480
+	.long	0x490
 	.long	.LBI4
 	.byte	.LVU18
 	.long	.LBB4
@@ -1779,7 +1786,7 @@ data_po:
 	.byte	0x25
 	.byte	0x5
 	.uleb128 0x19
-	.long	0x48d
+	.long	0x49d
 	.long	.LLST1
 	.long	.LVUS1
 	.byte	0
@@ -1793,7 +1800,7 @@ data_po:
 	.long	.LFE3-.LFB3
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x480
+	.long	0x490
 	.uleb128 0x1a
 	.long	.LASF39
 	.byte	0x1
@@ -1809,7 +1816,7 @@ data_po:
 	.byte	0xb
 	.byte	0x2c
 	.byte	0x3
-	.long	0x49a
+	.long	0x4aa
 	.uleb128 0x1c
 	.long	.LASF41
 	.byte	0x2

@@ -15,7 +15,7 @@
 // data peripheral output, buttons and knobs
 uint8_t data_po[PO_SIZE] = {0xFF,0XFF,0XFF,0,0,0,0};  // 3 bytes for buttons, 4 bytes knobs
 uint8_t debounce_timer[21] = {0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0};
-uint8_t buttons[21] = {1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1};
+uint8_t buttons[24] = {1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1};
 
 // data peripheral input, all leds
 uint8_t data_pi[9] = {  0,0,0,

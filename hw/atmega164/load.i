@@ -477,7 +477,7 @@ void __vector_26 (void) __attribute__ ((signal,used, externally_visible)) ; void
 # 16 "load.c"
 uint8_t data_po[7] = {0xFF,0XFF,0XFF,0,0,0,0};
 uint8_t debounce_timer[21] = {0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0};
-uint8_t buttons[21] = {1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1};
+uint8_t buttons[24] = {1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1};
 
 
 uint8_t data_pi[9] = { 0,0,0,

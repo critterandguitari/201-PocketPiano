@@ -362,7 +362,7 @@ END GROUP
  *(.jumptables*)
                 0x00000000000005ca                _etext = .
 
-.data           0x0000000000800100       0x1c load address 0x00000000000005ca
+.data           0x0000000000800100       0x20 load address 0x00000000000005ca
                 0x0000000000800100                PROVIDE (__data_start = .)
  *(.data)
  .data          0x0000000000800100        0x0 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/../../../../../../avr/lib/avr5/crtatmega164a.o
@@ -374,53 +374,54 @@ END GROUP
  .data          0x0000000000800100        0x0 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_clear_bss.o)
  .data          0x0000000000800100        0x0 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_umulhisi3.o)
  *(.data*)
- .data.buttons  0x0000000000800100       0x15 load.o
+ .data.buttons  0x0000000000800100       0x18 load.o
                 0x0000000000800100                buttons
- .data.data_po  0x0000000000800115        0x7 load.o
-                0x0000000000800115                data_po
+ .data.data_po  0x0000000000800118        0x7 load.o
+                0x0000000000800118                data_po
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.r*)
-                0x000000000080011c                . = ALIGN (0x2)
-                0x000000000080011c                _edata = .
-                0x000000000080011c                PROVIDE (__data_end = .)
+                0x0000000000800120                . = ALIGN (0x2)
+ *fill*         0x000000000080011f        0x1 
+                0x0000000000800120                _edata = .
+                0x0000000000800120                PROVIDE (__data_end = .)
 
-.bss            0x000000000080011c       0x24
-                0x000000000080011c                PROVIDE (__bss_start = .)
+.bss            0x0000000000800120       0x24
+                0x0000000000800120                PROVIDE (__bss_start = .)
  *(.bss)
- .bss           0x000000000080011c        0x0 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/../../../../../../avr/lib/avr5/crtatmega164a.o
- .bss           0x000000000080011c        0x0 load.o
- .bss           0x000000000080011c        0x0 apa102.o
- .bss           0x000000000080011c        0x0 i2c_peripheral.o
- .bss           0x000000000080011c        0x0 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_exit.o)
- .bss           0x000000000080011c        0x0 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_copy_data.o)
- .bss           0x000000000080011c        0x0 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_clear_bss.o)
- .bss           0x000000000080011c        0x0 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_umulhisi3.o)
+ .bss           0x0000000000800120        0x0 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/../../../../../../avr/lib/avr5/crtatmega164a.o
+ .bss           0x0000000000800120        0x0 load.o
+ .bss           0x0000000000800120        0x0 apa102.o
+ .bss           0x0000000000800120        0x0 i2c_peripheral.o
+ .bss           0x0000000000800120        0x0 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_exit.o)
+ .bss           0x0000000000800120        0x0 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_copy_data.o)
+ .bss           0x0000000000800120        0x0 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_clear_bss.o)
+ .bss           0x0000000000800120        0x0 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_umulhisi3.o)
  *(.bss*)
- .bss.data_pi   0x000000000080011c        0x9 load.o
-                0x000000000080011c                data_pi
+ .bss.data_pi   0x0000000000800120        0x9 load.o
+                0x0000000000800120                data_pi
  .bss.debounce_timer
-                0x0000000000800125       0x15 load.o
-                0x0000000000800125                debounce_timer
- .bss.i2c_req   0x000000000080013a        0x2 i2c_peripheral.o
- .bss.i2c_recv  0x000000000080013c        0x2 i2c_peripheral.o
+                0x0000000000800129       0x15 load.o
+                0x0000000000800129                debounce_timer
+ .bss.i2c_req   0x000000000080013e        0x2 i2c_peripheral.o
+ .bss.i2c_recv  0x0000000000800140        0x2 i2c_peripheral.o
  .bss.i2c_send_index
-                0x000000000080013e        0x1 i2c_peripheral.o
-                0x000000000080013e                i2c_send_index
+                0x0000000000800142        0x1 i2c_peripheral.o
+                0x0000000000800142                i2c_send_index
  .bss.i2c_recv_index
-                0x000000000080013f        0x1 i2c_peripheral.o
-                0x000000000080013f                i2c_recv_index
+                0x0000000000800143        0x1 i2c_peripheral.o
+                0x0000000000800143                i2c_recv_index
  *(COMMON)
-                0x0000000000800140                PROVIDE (__bss_end = .)
+                0x0000000000800144                PROVIDE (__bss_end = .)
                 0x00000000000005ca                __data_load_start = LOADADDR (.data)
-                0x00000000000005e6                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000000000005ea                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0000000000800140        0x0
+.noinit         0x0000000000800144        0x0
                 [!provide]                        PROVIDE (__noinit_start = .)
  *(.noinit .noinit.* .gnu.linkonce.n.*)
                 [!provide]                        PROVIDE (__noinit_end = .)
-                0x0000000000800140                _end = .
+                0x0000000000800144                _end = .
                 [!provide]                        PROVIDE (__heap_start = .)
 
 .eeprom         0x0000000000810000        0x0
@@ -504,16 +505,16 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x10b0
+.debug_info     0x0000000000000000     0x10c0
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x6cc /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/../../../../../../avr/lib/avr5/crtatmega164a.o
- .debug_info    0x00000000000006cc      0x4ef load.o
- .debug_info    0x0000000000000bbb      0x305 apa102.o
- .debug_info    0x0000000000000ec0      0x158 i2c_peripheral.o
- .debug_info    0x0000000000001018       0x26 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_exit.o)
- .debug_info    0x000000000000103e       0x26 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_copy_data.o)
- .debug_info    0x0000000000001064       0x26 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_clear_bss.o)
- .debug_info    0x000000000000108a       0x26 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_umulhisi3.o)
+ .debug_info    0x00000000000006cc      0x4ff load.o
+ .debug_info    0x0000000000000bcb      0x305 apa102.o
+ .debug_info    0x0000000000000ed0      0x158 i2c_peripheral.o
+ .debug_info    0x0000000000001028       0x26 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_exit.o)
+ .debug_info    0x000000000000104e       0x26 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_copy_data.o)
+ .debug_info    0x0000000000001074       0x26 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_clear_bss.o)
+ .debug_info    0x000000000000109a       0x26 /usr/local/Cellar/avr-gcc@9/9.3.0_3/lib/avr-gcc/9/gcc/avr/9.3.0/avr5/libgcc.a(_umulhisi3.o)
 
 .debug_abbrev   0x0000000000000000      0xae5
  *(.debug_abbrev)
